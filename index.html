@@ -1,0 +1,1061 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#0b0b12" />
+<title>Reconquiste — Landing Page de Alta Conversão | Zion Productions</title>
+<meta name="description" content="Descubra o método passo a passo para recuperar seu relacionamento. Ebook digital com garantia de 7 dias." />
+
+<!-- Open Graph / social -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Reconquiste — O método para recuperar seu relacionamento" />
+<meta property="og:description" content="Ebook digital passo a passo. Garantia incondicional de 7 dias." />
+
+<style>
+  /* ============================================================
+     TEMPLATE PREMIUM DE LANDING PAGE — ZION PRODUCTIONS
+     Config-driven. Edite o objeto CONFIG no <script> ao final.
+     ============================================================ */
+
+  :root{
+    --primary: #e11d6b;          /* injetada via JS a partir de CONFIG.cor_primaria */
+    --primary-strong: #b8134f;
+    --primary-soft: rgba(225,29,107,.14);
+    --bg: #0b0b12;
+    --bg-elev: #14141f;
+    --bg-card: #191927;
+    --line: rgba(255,255,255,.09);
+    --text: #f4f4f8;
+    --muted: #a7a7ba;
+    --white: #ffffff;
+    --success: #22c55e;
+    --warn: #f59e0b;
+    --radius: 18px;
+    --radius-sm: 12px;
+    --shadow-lg: 0 30px 80px -20px rgba(0,0,0,.65);
+    --shadow-glow: 0 20px 60px -12px var(--primary-soft);
+    --maxw: 1140px;
+    --font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --font-display: 'Poppins', var(--font);
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:var(--font); line-height:1.6;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+  img{ max-width:100%; display:block; }
+  a{ color:inherit; text-decoration:none; }
+  h1,h2,h3{ font-family:var(--font-display); line-height:1.14; margin:0 0 .4em; font-weight:800; letter-spacing:-.02em; }
+  h1{ font-size:clamp(2rem, 5.2vw, 3.5rem); }
+  h2{ font-size:clamp(1.6rem, 3.6vw, 2.6rem); }
+  h3{ font-size:clamp(1.15rem, 2vw, 1.5rem); }
+  p{ margin:0 0 1rem; color:var(--muted); }
+  strong{ color:var(--text); }
+  .wrap{ width:100%; max-width:var(--maxw); margin:0 auto; padding:0 22px; }
+  section{ position:relative; }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    --pad-y:18px; --pad-x:30px;
+    display:inline-flex; align-items:center; justify-content:center; gap:10px;
+    background:linear-gradient(135deg, var(--primary), var(--primary-strong));
+    color:var(--white); font-family:var(--font-display); font-weight:700;
+    font-size:clamp(1rem,1.6vw,1.18rem); letter-spacing:.01em;
+    padding:var(--pad-y) var(--pad-x); border:none; border-radius:999px;
+    cursor:pointer; text-align:center; line-height:1.2;
+    box-shadow:0 14px 34px -10px var(--primary), inset 0 1px 0 rgba(255,255,255,.25);
+    transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
+    position:relative; overflow:hidden; max-width:100%;
+  }
+  .btn::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(120deg, transparent 30%, rgba(255,255,255,.35) 50%, transparent 70%);
+    transform:translateX(-120%); transition:transform .7s ease;
+  }
+  .btn:hover{ transform:translateY(-3px); box-shadow:0 22px 48px -12px var(--primary), inset 0 1px 0 rgba(255,255,255,.3); }
+  .btn:hover::after{ transform:translateX(120%); }
+  .btn:active{ transform:translateY(-1px) scale(.99); }
+  .btn--lg{ --pad-y:22px; --pad-x:40px; font-size:clamp(1.05rem,1.8vw,1.32rem); }
+  .btn--block{ display:flex; width:100%; }
+  .btn__sub{ display:block; font-size:.72rem; font-weight:500; opacity:.85; letter-spacing:.02em; margin-top:2px; }
+  .btn-pulse{ animation:pulse 2.4s ease-in-out infinite; }
+  @keyframes pulse{
+    0%,100%{ box-shadow:0 14px 34px -10px var(--primary), 0 0 0 0 var(--primary-soft); }
+    50%{ box-shadow:0 14px 34px -10px var(--primary), 0 0 0 16px transparent; }
+  }
+
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--font-display); font-weight:600; font-size:.78rem;
+    letter-spacing:.14em; text-transform:uppercase; color:var(--primary);
+    background:var(--primary-soft); padding:7px 15px; border-radius:999px;
+    border:1px solid var(--primary-soft);
+  }
+  .center{ text-align:center; }
+  .reveal{ opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+
+  /* ---------- Top announcement bar ---------- */
+  .topbar{
+    background:linear-gradient(90deg, var(--primary-strong), var(--primary));
+    color:#fff; font-size:.85rem; font-weight:600; text-align:center;
+    padding:9px 16px; letter-spacing:.01em; position:relative; z-index:20;
+  }
+  .topbar span{ opacity:.95; }
+  .topbar b{ color:#fff; }
+
+  /* ---------- Header ---------- */
+  .site-header{
+    position:sticky; top:0; z-index:30;
+    backdrop-filter:blur(12px); background:rgba(11,11,18,.72);
+    border-bottom:1px solid var(--line);
+  }
+  .site-header .wrap{ display:flex; align-items:center; justify-content:space-between; height:66px; }
+  .brand{ display:flex; align-items:center; gap:11px; font-family:var(--font-display); font-weight:800; letter-spacing:-.01em; }
+  .brand .mark{
+    width:34px; height:34px; border-radius:9px; flex:0 0 auto;
+    background:linear-gradient(135deg, var(--primary), var(--primary-strong));
+    display:grid; place-items:center; color:#fff; font-size:1.05rem;
+    box-shadow:0 8px 20px -6px var(--primary);
+  }
+  .brand .name{ font-size:1.05rem; }
+  .brand .name small{ display:block; font-size:.62rem; font-weight:500; letter-spacing:.22em; color:var(--muted); text-transform:uppercase; }
+  .site-header .btn{ --pad-y:11px; --pad-x:22px; font-size:.92rem; }
+  .header-cta-hide{ display:none; }
+  @media(min-width:720px){ .header-cta-hide{ display:inline-flex; } }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding:56px 0 64px; overflow:hidden; }
+  .hero::before{
+    content:""; position:absolute; inset:-20% -10% auto -10%; height:640px; z-index:0;
+    background:
+      radial-gradient(650px 380px at 78% 8%, var(--primary-soft), transparent 70%),
+      radial-gradient(600px 360px at 12% 30%, rgba(120,80,255,.10), transparent 70%);
+    pointer-events:none;
+  }
+  .hero .wrap{ position:relative; z-index:1; }
+  .hero-grid{ display:grid; grid-template-columns:1fr; gap:44px; align-items:center; }
+  @media(min-width:960px){ .hero-grid{ grid-template-columns:1.05fr .95fr; gap:56px; } }
+  .hero h1 .hl{ color:var(--primary); }
+  .hero .sub{ font-size:clamp(1.05rem,1.8vw,1.28rem); color:var(--muted); max-width:44ch; }
+  .hero .sub strong{ color:var(--text); }
+  .hero-actions{ display:flex; flex-direction:column; gap:14px; margin-top:26px; }
+  @media(min-width:520px){ .hero-actions{ flex-direction:row; align-items:center; flex-wrap:wrap; } }
+  .trust-row{ display:flex; align-items:center; gap:16px; margin-top:26px; flex-wrap:wrap; }
+  .stars{ color:#ffb703; letter-spacing:2px; font-size:1.05rem; }
+  .trust-row .who{ font-size:.86rem; color:var(--muted); }
+  .trust-row .who b{ color:var(--text); }
+  .avatars{ display:flex; }
+  .avatars i{
+    width:34px; height:34px; border-radius:50%; margin-left:-10px; display:block;
+    border:2px solid var(--bg); background:linear-gradient(135deg,#3a3a55,#565676);
+  }
+  .avatars i:first-child{ margin-left:0; }
+
+  /* Ebook cover / mockup */
+  .cover-stage{ position:relative; display:grid; place-items:center; perspective:1400px; }
+  .cover-glow{
+    position:absolute; inset:8% 12%; z-index:0; filter:blur(50px);
+    background:radial-gradient(circle at 50% 40%, var(--primary), transparent 68%);
+    opacity:.55;
+  }
+  .ebook{
+    position:relative; z-index:1; width:min(340px, 78%);
+    border-radius:8px 14px 14px 8px; overflow:hidden;
+    box-shadow:var(--shadow-lg), -14px 0 0 -4px rgba(0,0,0,.35);
+    transform:rotateY(-16deg) rotateX(4deg) rotateZ(1deg);
+    transition:transform .6s cubic-bezier(.2,.7,.2,1);
+    background:linear-gradient(135deg, #23233a, #14141f);
+    border:1px solid rgba(255,255,255,.08);
+    aspect-ratio:1000/1414;
+  }
+  .cover-stage:hover .ebook{ transform:rotateY(-8deg) rotateX(2deg); }
+  .ebook::before{ /* spine highlight */
+    content:""; position:absolute; left:0; top:0; bottom:0; width:14px; z-index:3;
+    background:linear-gradient(90deg, rgba(0,0,0,.38), rgba(255,255,255,.08) 60%, transparent);
+  }
+  .ebook::after{ /* page glare */
+    content:""; position:absolute; inset:0; z-index:2; pointer-events:none;
+    background:linear-gradient(115deg, rgba(255,255,255,.18) 0%, transparent 34%);
+  }
+  .ebook img{ width:100%; height:100%; object-fit:cover; }
+  .ebook .fallback{
+    position:absolute; inset:0; display:flex; flex-direction:column; justify-content:space-between;
+    padding:30px 26px 34px; text-align:left;
+    background:
+      radial-gradient(120% 80% at 20% 0%, rgba(255,255,255,.08), transparent 60%),
+      linear-gradient(160deg, var(--primary-strong), #1b1b2c 78%);
+  }
+  .ebook .fallback .k{ font-size:.66rem; letter-spacing:.24em; text-transform:uppercase; color:rgba(255,255,255,.75); font-weight:600; }
+  .ebook .fallback .t{ font-family:var(--font-display); font-weight:800; font-size:1.7rem; line-height:1.1; color:#fff; }
+  .ebook .fallback .b{ font-size:.8rem; color:rgba(255,255,255,.78); border-top:1px solid rgba(255,255,255,.22); padding-top:12px; }
+  .cover-badge{
+    position:absolute; z-index:4; right:2%; top:6%;
+    background:var(--bg-card); border:1px solid var(--line);
+    border-radius:14px; padding:12px 15px; box-shadow:var(--shadow-lg);
+    display:flex; align-items:center; gap:10px; transform:rotate(3deg);
+  }
+  .cover-badge .n{ font-family:var(--font-display); font-weight:800; font-size:1.25rem; color:var(--text); }
+  .cover-badge .l{ font-size:.66rem; color:var(--muted); line-height:1.2; }
+  .cover-badge .ic{ font-size:1.3rem; }
+  .cover-badge.bl{ right:auto; left:0; top:auto; bottom:8%; transform:rotate(-3deg); }
+
+  /* ---------- Generic section spacing ---------- */
+  .sec{ padding:74px 0; }
+  .sec--tight{ padding:52px 0; }
+  .sec-head{ max-width:720px; margin:0 auto 46px; text-align:center; }
+  .sec-head p{ font-size:1.06rem; }
+
+  /* ---------- Pain section ---------- */
+  .pain{ background:linear-gradient(180deg, transparent, rgba(0,0,0,.25)); }
+  .pain-grid{ display:grid; gap:18px; grid-template-columns:1fr; }
+  @media(min-width:640px){ .pain-grid{ grid-template-columns:1fr 1fr; } }
+  .pain-card{
+    background:var(--bg-card); border:1px solid var(--line); border-radius:var(--radius);
+    padding:24px 24px 22px; display:flex; gap:15px; align-items:flex-start;
+  }
+  .pain-card .x{
+    flex:0 0 auto; width:38px; height:38px; border-radius:11px; display:grid; place-items:center;
+    background:rgba(239,68,68,.14); color:#f87171; font-size:1.15rem; font-weight:800;
+  }
+  .pain-card h3{ font-size:1.08rem; margin-bottom:4px; }
+  .pain-card p{ margin:0; font-size:.95rem; }
+
+  /* ---------- Insight / pattern break ---------- */
+  .insight{ }
+  .insight-box{
+    background:
+      radial-gradient(700px 300px at 100% 0%, var(--primary-soft), transparent 70%),
+      var(--bg-elev);
+    border:1px solid var(--line); border-radius:26px; padding:clamp(30px,5vw,58px);
+    box-shadow:var(--shadow-lg); position:relative; overflow:hidden;
+  }
+  .insight-box .quote-mark{
+    position:absolute; top:-10px; right:24px; font-family:Georgia,serif;
+    font-size:9rem; line-height:1; color:var(--primary-soft); font-weight:700; pointer-events:none;
+  }
+  .insight-box h2{ max-width:20ch; }
+  .insight-box p{ font-size:1.12rem; max-width:60ch; }
+  .insight-box .lead{ color:var(--text); font-weight:600; font-size:1.2rem; }
+
+  /* ---------- Ebook presentation ---------- */
+  .present-grid{ display:grid; grid-template-columns:1fr; gap:44px; align-items:center; }
+  @media(min-width:900px){ .present-grid{ grid-template-columns:.85fr 1.15fr; } }
+  .present-list{ list-style:none; padding:0; margin:22px 0 0; display:grid; gap:14px; }
+  .present-list li{ display:flex; gap:13px; align-items:flex-start; }
+  .present-list .ic{
+    flex:0 0 auto; width:30px; height:30px; border-radius:9px; display:grid; place-items:center;
+    background:var(--primary-soft); color:var(--primary); font-weight:800; font-size:.95rem;
+  }
+  .present-list li span{ color:var(--muted); }
+  .present-list li b{ color:var(--text); }
+  .meta-chips{ display:flex; flex-wrap:wrap; gap:10px; margin-top:26px; }
+  .chip{
+    display:inline-flex; align-items:center; gap:7px; font-size:.85rem; color:var(--text);
+    background:var(--bg-card); border:1px solid var(--line); padding:9px 14px; border-radius:999px;
+  }
+  .chip .d{ width:7px; height:7px; border-radius:50%; background:var(--success); }
+
+  /* ---------- Benefits ---------- */
+  .benefits-grid{ display:grid; gap:20px; grid-template-columns:1fr; }
+  @media(min-width:640px){ .benefits-grid{ grid-template-columns:1fr 1fr; } }
+  @media(min-width:980px){ .benefits-grid{ grid-template-columns:repeat(3,1fr); } }
+  .benefit{
+    background:var(--bg-card); border:1px solid var(--line); border-radius:var(--radius);
+    padding:28px 26px; transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  }
+  .benefit:hover{ transform:translateY(-5px); border-color:var(--primary-soft); box-shadow:var(--shadow-glow); }
+  .benefit .ic{
+    width:52px; height:52px; border-radius:14px; display:grid; place-items:center; font-size:1.5rem;
+    background:linear-gradient(135deg, var(--primary-soft), transparent);
+    border:1px solid var(--primary-soft); margin-bottom:16px;
+  }
+  .benefit h3{ font-size:1.16rem; }
+  .benefit p{ margin:0; font-size:.95rem; }
+
+  /* ---------- Offer ---------- */
+  .offer{ background:linear-gradient(180deg, rgba(0,0,0,.28), transparent); }
+  .offer-card{
+    max-width:640px; margin:0 auto; background:var(--bg-card);
+    border:1px solid var(--primary-soft); border-radius:26px; overflow:hidden;
+    box-shadow:var(--shadow-lg);
+  }
+  .offer-card .top{
+    background:linear-gradient(135deg, var(--primary), var(--primary-strong));
+    color:#fff; text-align:center; padding:22px; font-family:var(--font-display); font-weight:700;
+    letter-spacing:.02em; font-size:1.05rem;
+  }
+  .offer-card .body{ padding:clamp(26px,4vw,42px); text-align:center; }
+  .offer-includes{ list-style:none; padding:0; margin:0 auto 26px; max-width:400px; text-align:left; display:grid; gap:12px; }
+  .offer-includes li{ display:flex; gap:11px; align-items:flex-start; color:var(--muted); }
+  .offer-includes li::before{ content:"✓"; color:var(--success); font-weight:800; flex:0 0 auto; }
+  .offer-includes li b{ color:var(--text); }
+  .price{ display:flex; align-items:baseline; justify-content:center; gap:12px; margin:6px 0 4px; flex-wrap:wrap; }
+  .price .old{ color:var(--muted); text-decoration:line-through; font-size:1.15rem; }
+  .price .now{ font-family:var(--font-display); font-weight:800; font-size:clamp(2.4rem,6vw,3.4rem); color:var(--text); line-height:1; }
+  .price .now .cents{ font-size:1.4rem; vertical-align:top; }
+  .price-note{ font-size:.9rem; color:var(--muted); margin-bottom:22px; }
+  .price-note b{ color:var(--primary); }
+  .scarcity{
+    display:inline-flex; align-items:center; gap:8px; margin-bottom:18px;
+    background:rgba(245,158,11,.12); color:var(--warn); border:1px solid rgba(245,158,11,.25);
+    padding:8px 15px; border-radius:999px; font-size:.85rem; font-weight:600;
+  }
+  .pay-badges{ display:flex; align-items:center; justify-content:center; gap:14px; margin-top:20px; flex-wrap:wrap; color:var(--muted); font-size:.82rem; }
+  .pay-badges .b{ display:flex; align-items:center; gap:6px; }
+
+  /* countdown */
+  .countdown{ display:flex; gap:10px; justify-content:center; margin:4px 0 22px; }
+  .countdown .u{ background:var(--bg-elev); border:1px solid var(--line); border-radius:12px; padding:10px 14px; min-width:64px; }
+  .countdown .u b{ font-family:var(--font-display); font-size:1.6rem; display:block; color:var(--text); line-height:1; }
+  .countdown .u span{ font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+
+  /* ---------- Bonus ---------- */
+  .bonus-grid{ display:grid; gap:18px; grid-template-columns:1fr; }
+  @media(min-width:720px){ .bonus-grid{ grid-template-columns:1fr 1fr; } }
+  .bonus{
+    display:flex; gap:16px; align-items:flex-start; background:var(--bg-card);
+    border:1px solid var(--line); border-radius:var(--radius); padding:22px;
+    position:relative; overflow:hidden;
+  }
+  .bonus .tag{
+    position:absolute; top:14px; right:-30px; transform:rotate(38deg);
+    background:var(--primary); color:#fff; font-size:.66rem; font-weight:800; letter-spacing:.1em;
+    padding:4px 40px; text-transform:uppercase;
+  }
+  .bonus .ic{ flex:0 0 auto; font-size:1.8rem; width:54px; height:54px; border-radius:14px; display:grid; place-items:center; background:var(--primary-soft); }
+  .bonus h3{ font-size:1.08rem; margin-bottom:3px; }
+  .bonus p{ margin:0; font-size:.9rem; }
+  .bonus .val{ display:inline-block; margin-top:8px; font-size:.8rem; color:var(--success); font-weight:700; }
+
+  /* ---------- Testimonials ---------- */
+  .tst-grid{ display:grid; gap:20px; grid-template-columns:1fr; }
+  @media(min-width:720px){ .tst-grid{ grid-template-columns:1fr 1fr; } }
+  @media(min-width:1000px){ .tst-grid{ grid-template-columns:repeat(3,1fr); } }
+  .tst{
+    background:var(--bg-card); border:1px solid var(--line); border-radius:var(--radius); padding:26px;
+    display:flex; flex-direction:column; gap:14px;
+  }
+  .tst .stars{ font-size:.95rem; }
+  .tst p{ margin:0; color:var(--text); font-size:.98rem; }
+  .tst .who{ display:flex; align-items:center; gap:12px; margin-top:auto; }
+  .tst .who i{ width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg,var(--primary),var(--primary-strong)); display:grid; place-items:center; color:#fff; font-family:var(--font-display); font-weight:800; }
+  .tst .who .nm{ font-weight:700; font-size:.92rem; }
+  .tst .who .rl{ font-size:.8rem; color:var(--muted); }
+  .verified{ font-size:.72rem; color:var(--success); display:inline-flex; align-items:center; gap:4px; }
+
+  /* ---------- Guarantee ---------- */
+  .guarantee{ }
+  .guarantee-box{
+    display:grid; grid-template-columns:1fr; gap:30px; align-items:center;
+    background:linear-gradient(135deg, rgba(34,197,94,.08), var(--bg-elev));
+    border:1px solid rgba(34,197,94,.25); border-radius:26px; padding:clamp(28px,4vw,48px);
+  }
+  @media(min-width:760px){ .guarantee-box{ grid-template-columns:180px 1fr; gap:40px; } }
+  .seal{
+    width:180px; max-width:52vw; margin:0 auto; aspect-ratio:1; border-radius:50%;
+    background:radial-gradient(circle at 50% 35%, #14361f, #0c2114);
+    border:3px solid var(--success); display:grid; place-items:center; text-align:center;
+    box-shadow:0 0 0 8px rgba(34,197,94,.10), var(--shadow-lg); position:relative;
+  }
+  .seal .big{ font-family:var(--font-display); font-weight:800; font-size:3rem; color:var(--success); line-height:1; }
+  .seal .sm{ font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; color:#bbf7d0; margin-top:2px; }
+  .seal::before{ content:"★"; position:absolute; top:12px; color:var(--success); font-size:.9rem; opacity:.8; }
+  .guarantee-box h2{ color:var(--text); }
+  .guarantee-box p{ font-size:1.03rem; margin-bottom:0; }
+  .guarantee-box .hotmart{ display:inline-flex; align-items:center; gap:8px; margin-top:16px; font-size:.85rem; color:var(--muted); }
+  .guarantee-box .hotmart b{ color:var(--text); }
+
+  /* ---------- FAQ ---------- */
+  .faq-list{ max-width:780px; margin:0 auto; display:grid; gap:12px; }
+  .faq-item{ background:var(--bg-card); border:1px solid var(--line); border-radius:var(--radius-sm); overflow:hidden; transition:border-color .2s ease; }
+  .faq-item[open]{ border-color:var(--primary-soft); }
+  .faq-item summary{
+    list-style:none; cursor:pointer; padding:20px 22px; display:flex; align-items:center; justify-content:space-between; gap:16px;
+    font-family:var(--font-display); font-weight:600; font-size:1.03rem; color:var(--text);
+  }
+  .faq-item summary::-webkit-details-marker{ display:none; }
+  .faq-item summary .plus{ flex:0 0 auto; width:26px; height:26px; border-radius:50%; border:1px solid var(--line); display:grid; place-items:center; transition:transform .25s ease, background .25s ease; color:var(--primary); font-weight:700; }
+  .faq-item[open] summary .plus{ transform:rotate(45deg); background:var(--primary-soft); }
+  .faq-item .ans{ padding:0 22px 20px; }
+  .faq-item .ans p{ margin:0; }
+
+  /* ---------- Final CTA ---------- */
+  .final{
+    text-align:center;
+    background:
+      radial-gradient(700px 400px at 50% 0%, var(--primary-soft), transparent 70%),
+      linear-gradient(180deg, transparent, rgba(0,0,0,.3));
+  }
+  .final h2{ max-width:22ch; margin-left:auto; margin-right:auto; }
+  .final p{ max-width:52ch; margin-left:auto; margin-right:auto; font-size:1.08rem; }
+  .final .btn{ margin-top:14px; }
+  .final .micro{ margin-top:18px; font-size:.85rem; color:var(--muted); }
+
+  /* ---------- Footer ---------- */
+  .site-footer{ border-top:1px solid var(--line); padding:48px 0 40px; background:var(--bg-elev); }
+  .footer-top{ display:flex; flex-direction:column; gap:26px; align-items:flex-start; justify-content:space-between; }
+  @media(min-width:760px){ .footer-top{ flex-direction:row; align-items:center; } }
+  .footer-links{ display:flex; gap:22px; flex-wrap:wrap; font-size:.9rem; }
+  .footer-links a{ color:var(--muted); transition:color .2s ease; }
+  .footer-links a:hover{ color:var(--text); }
+  .footer-meta{ margin-top:28px; padding-top:24px; border-top:1px solid var(--line); font-size:.82rem; color:var(--muted); }
+  .footer-meta p{ margin:0 0 8px; font-size:.82rem; }
+  .disclaimer{ background:rgba(255,255,255,.03); border:1px solid var(--line); border-radius:12px; padding:16px 18px; margin-top:18px; font-size:.8rem; color:var(--muted); line-height:1.7; }
+  .disclaimer b{ color:var(--text); }
+
+  /* ---------- Sticky mobile CTA ---------- */
+  .sticky-cta{
+    position:fixed; left:0; right:0; bottom:0; z-index:40; padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+    background:rgba(11,11,18,.9); backdrop-filter:blur(12px); border-top:1px solid var(--line);
+    transform:translateY(120%); transition:transform .35s ease;
+  }
+  .sticky-cta.show{ transform:translateY(0); }
+  .sticky-cta .wrap{ display:flex; align-items:center; gap:14px; justify-content:space-between; }
+  .sticky-cta .price-sm{ line-height:1.1; }
+  .sticky-cta .price-sm b{ font-family:var(--font-display); font-size:1.25rem; color:var(--text); }
+  .sticky-cta .price-sm span{ display:block; font-size:.72rem; color:var(--muted); }
+  .sticky-cta .btn{ --pad-y:14px; --pad-x:24px; font-size:.98rem; white-space:nowrap; }
+  @media(min-width:720px){ .sticky-cta{ display:none; } }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; scroll-behavior:auto !important; }
+    .reveal{ opacity:1; transform:none; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ===== Announcement bar ===== -->
+  <div class="topbar" id="topbar">
+    <span>🔥 Oferta de lançamento — <b>acesso imediato</b> + bônus exclusivos. Vagas limitadas.</span>
+  </div>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="#top" aria-label="Zion Productions">
+        <span class="mark">Z</span>
+        <span class="name">Zion Productions<small>Digital Publishing</small></span>
+      </a>
+      <a href="#oferta" class="btn header-cta-hide" data-cta>Garantir agora</a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div class="hero-copy reveal">
+            <span class="eyebrow" id="hero-eyebrow">Guia definitivo</span>
+            <h1 id="hero-title" style="margin-top:16px;">
+              Reconquiste quem você ama — <span class="hl">antes que seja tarde demais</span>
+            </h1>
+            <p class="sub" id="hero-sub">
+              O método passo a passo, comprovado por <strong>milhares de pessoas</strong>, para
+              reacender a conexão, reverter o afastamento e recuperar seu relacionamento
+              <strong>com dignidade</strong> — sem súplicas, jogos ou desespero.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#oferta" class="btn btn--lg btn-pulse" data-cta id="hero-cta">
+                Quero recuperar meu relacionamento agora
+                <span class="btn__sub">Acesso imediato • Garantia de 7 dias</span>
+              </a>
+            </div>
+
+            <div class="trust-row">
+              <div class="avatars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+              <div>
+                <div class="stars">★★★★★</div>
+                <div class="who"><b>+3.200 leitores</b> já aplicaram o método</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cover-stage reveal">
+            <div class="cover-glow"></div>
+            <div class="ebook" id="ebook-cover">
+              <!-- Se CONFIG.capa tiver URL, uma <img> é injetada aqui. Caso contrário, mostramos o fallback abaixo. -->
+              <div class="fallback" id="ebook-fallback">
+                <div class="k">Zion Productions</div>
+                <div>
+                  <div class="t" id="ebook-fallback-title">Reconquiste</div>
+                  <p style="color:rgba(255,255,255,.82); font-size:.9rem; margin:.5rem 0 0;">O método para recuperar seu relacionamento</p>
+                </div>
+                <div class="b">EBOOK DIGITAL • EDIÇÃO 2026</div>
+              </div>
+            </div>
+            <div class="cover-badge">
+              <span class="ic">⭐</span>
+              <div><div class="n">4.9/5</div><div class="l">avaliação<br>dos leitores</div></div>
+            </div>
+            <div class="cover-badge bl">
+              <span class="ic">⚡</span>
+              <div><div class="n">PDF</div><div class="l">acesso<br>imediato</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 1. DOR EMOCIONAL ===== -->
+    <section class="sec pain">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="eyebrow">Talvez você se reconheça</span>
+          <h2 style="margin-top:14px;">Você faz de tudo — e ainda assim sente que está perdendo essa pessoa</h2>
+          <p>Se algum destes pensamentos tira o seu sono, você não está sozinho(a). E o problema não é falta de amor.</p>
+        </div>
+        <div class="pain-grid" id="pain-grid">
+          <!-- injetado via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 2. INSIGHT / QUEBRA DE PADRÃO ===== -->
+    <section class="sec insight">
+      <div class="wrap">
+        <div class="insight-box reveal">
+          <span class="quote-mark" aria-hidden="true">”</span>
+          <span class="eyebrow">A virada de chave</span>
+          <h2 style="margin-top:14px;">Insistir mais é exatamente o que empurra a pessoa para longe</h2>
+          <p class="lead">A maioria erra tentando <strong>convencer</strong>. O que realmente reconstrói a atração é o oposto: reconstruir a sua própria presença.</p>
+          <p>Cada mensagem cobrando, cada tentativa de “conversar para resolver”, cada demonstração de carência comunica escassez — e a escassez mata o desejo. Este ebook inverte a lógica: em vez de correr atrás, você aprende a criar o ambiente emocional em que a outra pessoa <strong>volta a se aproximar por vontade própria</strong>. Não é manipulação. É entender como a conexão humana realmente funciona.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 3. APRESENTAÇÃO DO EBOOK ===== -->
+    <section class="sec">
+      <div class="wrap">
+        <div class="present-grid">
+          <div class="cover-stage reveal">
+            <div class="cover-glow"></div>
+            <div class="ebook" id="ebook-cover-2" style="width:min(300px,86%);">
+              <div class="fallback">
+                <div class="k">Zion Productions</div>
+                <div>
+                  <div class="t" id="ebook-fallback-title-2">Reconquiste</div>
+                  <p style="color:rgba(255,255,255,.82); font-size:.85rem; margin:.5rem 0 0;">O método para recuperar seu relacionamento</p>
+                </div>
+                <div class="b">EBOOK DIGITAL • EDIÇÃO 2026</div>
+              </div>
+            </div>
+          </div>
+          <div class="reveal">
+            <span class="eyebrow">Conheça o material</span>
+            <h2 style="margin-top:14px;" id="present-title">Reconquiste: o passo a passo completo</h2>
+            <p>Um guia direto, sem enrolação e 100% aplicável — pensado para quem precisa de clareza <strong>agora</strong>, não de teoria. Cada capítulo entrega uma ação prática que você pode colocar em movimento ainda hoje.</p>
+            <ul class="present-list" id="present-list">
+              <!-- injetado via JS -->
+            </ul>
+            <div class="meta-chips">
+              <span class="chip"><span class="d"></span> Formato PDF</span>
+              <span class="chip"><span class="d"></span> Leia no celular ou PC</span>
+              <span class="chip"><span class="d"></span> Acesso vitalício</span>
+              <span class="chip"><span class="d"></span> Atualizações grátis</span>
+            </div>
+            <div style="margin-top:28px;">
+              <a href="#oferta" class="btn" data-cta>Quero o meu exemplar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 4. BENEFÍCIOS ===== -->
+    <section class="sec" style="background:linear-gradient(180deg, rgba(0,0,0,.22), transparent);">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="eyebrow">O que muda pra você</span>
+          <h2 style="margin-top:14px;">Do desespero ao controle da situação</h2>
+          <p>Não é sobre “dicas soltas”. É sobre um novo posicionamento que transforma como você age — e como você é visto(a).</p>
+        </div>
+        <div class="benefits-grid" id="benefits-grid">
+          <!-- injetado via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 5. OFERTA ===== -->
+    <section class="sec offer" id="oferta">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="eyebrow">Oferta especial de lançamento</span>
+          <h2 style="margin-top:14px;">Comece sua reconquista hoje</h2>
+          <p>Acesso imediato ao ebook completo + bônus. Pagamento único, sem mensalidade.</p>
+        </div>
+
+        <div class="offer-card reveal">
+          <div class="top">🎁 Pacote completo — por tempo limitado</div>
+          <div class="body">
+            <div class="scarcity">⏳ Preço promocional encerrando em breve</div>
+
+            <div class="countdown" id="countdown" aria-hidden="true">
+              <div class="u"><b id="cd-h">00</b><span>horas</span></div>
+              <div class="u"><b id="cd-m">00</b><span>min</span></div>
+              <div class="u"><b id="cd-s">00</b><span>seg</span></div>
+            </div>
+
+            <ul class="offer-includes" id="offer-includes">
+              <li><b>Ebook Reconquiste</b> — método completo em PDF</li>
+              <!-- bônus injetados via JS -->
+            </ul>
+
+            <div class="price">
+              <span class="old">De R$ 97,00</span>
+              <span class="now">R$ 37<span class="cents">,00</span></span>
+            </div>
+            <div class="price-note">ou <b>até 3x</b> no cartão • pagamento 100% seguro via Hotmart</div>
+
+            <a href="#" class="btn btn--lg btn--block btn-pulse" data-checkout id="offer-cta">
+              Quero recuperar meu relacionamento agora
+              <span class="btn__sub">Acesso liberado em segundos após a compra</span>
+            </a>
+
+            <div class="pay-badges">
+              <span class="b">🔒 Compra segura</span>
+              <span class="b">💳 Pix, cartão e boleto</span>
+              <span class="b">⚡ Entrega imediata</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BÔNUS ===== -->
+    <section class="sec sec--tight" id="bonus-section">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="eyebrow">Você ainda leva</span>
+          <h2 style="margin-top:14px;">Bônus exclusivos inclusos hoje</h2>
+        </div>
+        <div class="bonus-grid" id="bonus-grid">
+          <!-- injetado via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 7. GARANTIA ===== -->
+    <section class="sec guarantee">
+      <div class="wrap">
+        <div class="guarantee-box reveal">
+          <div class="seal">
+            <div>
+              <div class="big">7</div>
+              <div class="sm">dias de<br>garantia</div>
+            </div>
+          </div>
+          <div>
+            <span class="eyebrow" style="color:var(--success); background:rgba(34,197,94,.12); border-color:rgba(34,197,94,.2);">Risco zero para você</span>
+            <h2 style="margin-top:14px;">Garantia incondicional de 7 dias</h2>
+            <p>Leia o ebook, aplique o método e sinta os primeiros resultados. Se por qualquer motivo você achar que não é para você, basta pedir o reembolso dentro de 7 dias e receba <strong>100% do seu dinheiro de volta</strong> — sem perguntas, sem burocracia.</p>
+            <span class="hotmart">✅ Garantia processada e assegurada pela <b>Hotmart</b>, a maior plataforma de produtos digitais da América Latina.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 8. DEPOIMENTOS (opcional) ===== -->
+    <section class="sec" id="testimonials-section" style="display:none; background:linear-gradient(180deg, rgba(0,0,0,.22), transparent);">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="eyebrow">Histórias reais</span>
+          <h2 style="margin-top:14px;">Quem aplicou, transformou</h2>
+          <p>Resultados de leitores que decidiram agir. Os resultados variam de pessoa para pessoa.</p>
+        </div>
+        <div class="tst-grid" id="tst-grid">
+          <!-- injetado via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="sec">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="eyebrow">Ainda com dúvidas?</span>
+          <h2 style="margin-top:14px;">Perguntas frequentes</h2>
+        </div>
+        <div class="faq-list" id="faq-list">
+          <!-- injetado via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 9. CTA FINAL ===== -->
+    <section class="sec final">
+      <div class="wrap reveal">
+        <span class="eyebrow">A decisão é sua</span>
+        <h2 style="margin-top:14px;">Daqui a uma semana, você vai desejar ter começado hoje</h2>
+        <p>Cada dia que passa sem agir é um dia a mais de distância. Você já sabe o que o silêncio provoca. Que tal fazer diferente a partir de agora?</p>
+        <a href="#oferta" class="btn btn--lg btn-pulse" data-cta>
+          Quero recuperar meu relacionamento agora
+          <span class="btn__sub">Acesso imediato • Garantia de 7 dias • Risco zero</span>
+        </a>
+        <div class="micro">🔒 Pagamento seguro via Hotmart • 💾 Entrega imediata no seu e-mail</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <a class="brand" href="#top">
+          <span class="mark">Z</span>
+          <span class="name">Zion Productions<small>Digital Publishing</small></span>
+        </a>
+        <nav class="footer-links" aria-label="Rodapé">
+          <a href="#" data-doc="terms">Terms of Use</a>
+          <a href="#" data-doc="privacy">Privacy Policy</a>
+          <a href="#" data-doc="disclaimer">Disclaimer</a>
+        </nav>
+      </div>
+      <div class="footer-meta">
+        <div class="disclaimer">
+          <b>Disclaimer:</b> Este é um produto educacional de caráter informativo. Os resultados variam de pessoa para pessoa e dependem de dedicação, contexto individual e aplicação do conteúdo. Nenhum resultado específico é garantido. Este material não substitui acompanhamento psicológico ou profissional. Este site não é afiliado ao Facebook, Instagram ou à Meta Platforms Inc.
+        </div>
+        <p style="margin-top:18px;">Zion Productions © 2026 — Todos os direitos reservados.</p>
+        <p>CNPJ: 13.204.926/0001-40</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== Sticky mobile CTA ===== -->
+  <div class="sticky-cta" id="sticky-cta">
+    <div class="wrap">
+      <div class="price-sm"><b>R$ 37,00</b><span>De R$ 97 • hoje</span></div>
+      <a href="#oferta" class="btn" data-cta>Quero agora</a>
+    </div>
+  </div>
+
+<script>
+/* ============================================================
+   CONFIGURAÇÃO — edite este objeto para adaptar a qualquer ebook.
+   Basta trocar textos, cores, benefícios, FAQ e bônus.
+   ============================================================ */
+const CONFIG = {
+  "titulo": "Reconquiste quem você ama — antes que seja tarde demais",
+  "subtitulo": "O método passo a passo, comprovado por milhares de pessoas, para reacender a conexão, reverter o afastamento e recuperar seu relacionamento com dignidade — sem súplicas, jogos ou desespero.",
+  "cta": "Quero recuperar meu relacionamento agora",
+  "capa": "",                       // URL da imagem de capa. Vazio = usa a capa gerada (fallback).
+  "cor_primaria": "#e11d6b",        // cor de destaque do template
+  "checkout_url": "#",              // link do checkout Hotmart
+  "nome_ebook": "Reconquiste",
+  "promessa_ebook": "O método para recuperar seu relacionamento",
+  "preco": "R$ 37,00",
+  "preco_de": "De R$ 97,00",
+  "parcelas": "até 3x",
+
+  // 1. DOR EMOCIONAL
+  "dores": [
+    { "titulo": "As mensagens ficam sem resposta", "texto": "Você vê a conversa marcada como lida e o silêncio dói mais do que qualquer palavra." },
+    { "titulo": "Quanto mais você insiste, mais afasta", "texto": "Cada tentativa de conversar parece empurrar essa pessoa ainda mais para longe de você." },
+    { "titulo": "Você perdeu o sono e a paz", "texto": "A mente não desliga: revive cada detalhe tentando entender onde tudo começou a dar errado." },
+    { "titulo": "O medo de perder de vez", "texto": "No fundo bate o pavor de que, se você não fizer nada certo agora, será tarde demais." }
+  ],
+
+  // 3. APRESENTAÇÃO — o que tem dentro
+  "conteudo": [
+    { "titulo": "O erro fatal da reconquista", "texto": "e por que 9 em cada 10 pessoas o cometem sem perceber." },
+    { "titulo": "O protocolo de silêncio estratégico", "texto": "quando e como recuar para despertar a falta." },
+    { "titulo": "A conversa de reaproximação", "texto": "os gatilhos exatos para reabrir o diálogo sem pressão." },
+    { "titulo": "Reconstruindo a atração", "texto": "como voltar a ser a melhor versão que conquistou essa pessoa." },
+    { "titulo": "Blindagem contra recaídas", "texto": "para que a relação não volte ao mesmo ciclo de antes." }
+  ],
+
+  // 4. BENEFÍCIOS
+  "beneficios": [
+    { "icone": "🧭", "titulo": "Clareza total", "texto": "Saia da confusão emocional e entenda exatamente qual é o próximo passo a dar." },
+    { "icone": "🛑", "titulo": "Pare de errar", "texto": "Identifique e elimine as atitudes que estão sabotando qualquer chance de reconciliação." },
+    { "icone": "💬", "titulo": "Reabra o diálogo", "texto": "Aprenda a reiniciar a conversa de um jeito que desperta interesse, não rejeição." },
+    { "icone": "🔥", "titulo": "Reacenda a atração", "texto": "Reconstrua a conexão emocional que fez essa pessoa se apaixonar por você." },
+    { "icone": "🧘", "titulo": "Recupere sua paz", "texto": "Troque a ansiedade e o desespero por segurança e controle das suas emoções." },
+    { "icone": "♾️", "titulo": "Resultado duradouro", "texto": "Construa uma base que evita que os mesmos problemas voltem a acontecer." }
+  ],
+
+  // BÔNUS
+  "bonus": [
+    { "icone": "📱", "titulo": "Guia de Mensagens Prontas", "texto": "Modelos testados para reabrir a conversa sem parecer carente ou desesperado.", "valor": "Valor: R$ 47" },
+    { "icone": "🧠", "titulo": "Mini-curso: Autoestima Blindada", "texto": "Áudio-aulas para você se manter firme e seguro durante todo o processo.", "valor": "Valor: R$ 67" },
+    { "icone": "📋", "titulo": "Checklist dos 21 Dias", "texto": "Um plano diário de ações para não travar e manter o foco na reconquista.", "valor": "Valor: R$ 37" },
+    { "icone": "🎧", "titulo": "Suporte por E-mail", "texto": "Tire dúvidas sobre o método diretamente com a nossa equipe.", "valor": "Bônus especial" }
+  ],
+
+  // FAQ
+  "faq": [
+    { "p": "Vou receber o material na hora?", "r": "Sim! O acesso é 100% digital e imediato. Assim que o pagamento é confirmado, o ebook e todos os bônus são liberados no seu e-mail e na plataforma da Hotmart." },
+    { "p": "Funciona para qualquer situação?", "r": "O método foi construído sobre princípios de comportamento e conexão que se aplicam à maioria dos relacionamentos. Ele não é uma fórmula mágica, mas um passo a passo que aumenta significativamente as suas chances quando aplicado com consistência." },
+    { "p": "Preciso de conhecimento prévio?", "r": "Nenhum. A linguagem é simples e direta, pensada para você aplicar mesmo estando emocionalmente abalado(a). É só ler e seguir os passos." },
+    { "p": "Em quanto tempo vejo resultado?", "r": "Varia de pessoa para pessoa e de cada situação. Muitos leitores relatam mudanças na dinâmica já nos primeiros dias de aplicação, mas o mais importante é a consistência." },
+    { "p": "É seguro comprar? E se eu não gostar?", "r": "Totalmente seguro. A compra é processada pela Hotmart e você conta com 7 dias de garantia incondicional. Se não gostar, devolvemos 100% do valor, sem perguntas." },
+    { "p": "Em quais dispositivos consigo ler?", "r": "Em qualquer um: celular, tablet, computador ou notebook. O material é em PDF e o acesso é vitalício." }
+  ],
+
+  // 8. DEPOIMENTOS (opcional)
+  "mostrar_depoimentos": true,
+  "depoimentos": [
+    { "nome": "Mariana S.", "papel": "Leitora verificada", "texto": "Eu estava me humilhando e só piorava. Depois que entendi o erro que estava cometendo, tudo mudou. Hoje estamos reconstruindo do zero, e melhor que antes." },
+    { "nome": "Rafael T.", "papel": "Leitor verificado", "texto": "Achei que fosse mais um 'texto motivacional', mas é prático de verdade. O protocolo de silêncio estratégico foi um divisor de águas pra mim." },
+    { "nome": "Camila R.", "papel": "Leitora verificada", "texto": "O que mais me ajudou foi recuperar a minha paz. Parei de agir por desespero e comecei a agir com estratégia. A diferença foi absurda." }
+  ]
+};
+
+/* ============================================================
+   RENDERIZAÇÃO — não é necessário editar daqui pra baixo.
+   ============================================================ */
+(function(){
+  const $ = (s, el=document) => el.querySelector(s);
+  const $$ = (s, el=document) => [...el.querySelectorAll(s)];
+  const esc = (str='') => String(str).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+  // ---- Cor primária ----
+  function hexToRgb(hex){
+    hex = hex.replace('#','');
+    if(hex.length===3) hex = hex.split('').map(c=>c+c).join('');
+    const n = parseInt(hex,16);
+    return { r:(n>>16)&255, g:(n>>8)&255, b:n&255 };
+  }
+  function darken(hex, amt=0.18){
+    const {r,g,b} = hexToRgb(hex);
+    const d = v => Math.max(0, Math.round(v*(1-amt)));
+    return `rgb(${d(r)},${d(g)},${d(b)})`;
+  }
+  if(CONFIG.cor_primaria){
+    const root = document.documentElement.style;
+    const {r,g,b} = hexToRgb(CONFIG.cor_primaria);
+    root.setProperty('--primary', CONFIG.cor_primaria);
+    root.setProperty('--primary-strong', darken(CONFIG.cor_primaria, 0.22));
+    root.setProperty('--primary-soft', `rgba(${r},${g},${b},.15)`);
+    const tc = document.querySelector('meta[name="theme-color"]');
+    if(tc) tc.setAttribute('content', CONFIG.cor_primaria);
+  }
+
+  // ---- Textos principais ----
+  if(CONFIG.titulo){
+    // mantém o span destacado se houver "—"
+    const parts = CONFIG.titulo.split('—');
+    if(parts.length > 1){
+      $('#hero-title').innerHTML = esc(parts[0].trim()) + ' <span class="hl">' + esc(parts.slice(1).join('—').trim()) + '</span>';
+    } else {
+      $('#hero-title').textContent = CONFIG.titulo;
+    }
+  }
+  if(CONFIG.subtitulo) $('#hero-sub').textContent = CONFIG.subtitulo;
+  if(CONFIG.cta){
+    $$('#hero-cta, #offer-cta, .final .btn[data-cta]').forEach(btn=>{
+      const sub = btn.querySelector('.btn__sub');
+      const subHtml = sub ? sub.outerHTML : '';
+      btn.innerHTML = esc(CONFIG.cta) + subHtml;
+    });
+  }
+  if(CONFIG.nome_ebook){
+    $$('#ebook-fallback-title, #ebook-fallback-title-2').forEach(e=> e.textContent = CONFIG.nome_ebook);
+    $('#present-title').textContent = CONFIG.nome_ebook + ': o passo a passo completo';
+  }
+  if(CONFIG.promessa_ebook){
+    $$('#ebook-fallback .fallback p, #ebook-cover-2 .fallback p').forEach(()=>{});
+  }
+
+  // ---- Capa ----
+  if(CONFIG.capa){
+    $$('#ebook-cover, #ebook-cover-2').forEach(cover=>{
+      const fb = cover.querySelector('.fallback');
+      if(fb) fb.style.display = 'none';
+      const img = document.createElement('img');
+      img.src = CONFIG.capa;
+      img.alt = 'Capa do ebook ' + (CONFIG.nome_ebook || '');
+      img.loading = 'lazy';
+      img.onerror = () => { img.remove(); if(fb) fb.style.display=''; };
+      cover.insertBefore(img, cover.firstChild);
+    });
+  }
+
+  // ---- Checkout links ----
+  const checkout = CONFIG.checkout_url || '#';
+  $$('[data-checkout]').forEach(a => a.setAttribute('href', checkout));
+
+  // ---- Preço ----
+  if(CONFIG.preco){
+    const m = CONFIG.preco.match(/([\d.]+)[,.](\d{2})/);
+    if(m){
+      $('.price .now').innerHTML = 'R$ ' + m[1] + '<span class="cents">,' + m[2] + '</span>';
+    } else {
+      $('.price .now').textContent = CONFIG.preco;
+    }
+    $('#sticky-cta .price-sm b').textContent = CONFIG.preco;
+  }
+  if(CONFIG.preco_de){
+    $('.price .old').textContent = CONFIG.preco_de;
+    $('#sticky-cta .price-sm span').textContent = CONFIG.preco_de.replace('De ','De ') + ' • hoje';
+  }
+  if(CONFIG.parcelas){
+    $('.price-note').innerHTML = 'ou <b>' + esc(CONFIG.parcelas) + '</b> no cartão • pagamento 100% seguro via Hotmart';
+  }
+
+  // ---- 1. Dores ----
+  if(Array.isArray(CONFIG.dores) && CONFIG.dores.length){
+    $('#pain-grid').innerHTML = CONFIG.dores.map(d => `
+      <div class="pain-card reveal">
+        <span class="x">✕</span>
+        <div><h3>${esc(d.titulo)}</h3><p>${esc(d.texto)}</p></div>
+      </div>`).join('');
+  }
+
+  // ---- 3. Conteúdo ----
+  if(Array.isArray(CONFIG.conteudo) && CONFIG.conteudo.length){
+    $('#present-list').innerHTML = CONFIG.conteudo.map((c,i) => `
+      <li><span class="ic">${i+1}</span><span><b>${esc(c.titulo)}</b> — ${esc(c.texto)}</span></li>`).join('');
+  }
+
+  // ---- 4. Benefícios ----
+  if(Array.isArray(CONFIG.beneficios) && CONFIG.beneficios.length){
+    $('#benefits-grid').innerHTML = CONFIG.beneficios.map(b => {
+      // aceita string simples ou objeto
+      if(typeof b === 'string') b = { icone:'✅', titulo:b, texto:'' };
+      return `
+      <div class="benefit reveal">
+        <div class="ic">${esc(b.icone || '✅')}</div>
+        <h3>${esc(b.titulo || '')}</h3>
+        <p>${esc(b.texto || '')}</p>
+      </div>`;
+    }).join('');
+  }
+
+  // ---- Bônus (grid + inclui na oferta) ----
+  if(Array.isArray(CONFIG.bonus) && CONFIG.bonus.length){
+    $('#bonus-grid').innerHTML = CONFIG.bonus.map((b,i) => {
+      if(typeof b === 'string') b = { icone:'🎁', titulo:b, texto:'' };
+      return `
+      <div class="bonus reveal">
+        ${i < 3 ? '<span class="tag">Grátis</span>' : ''}
+        <div class="ic">${esc(b.icone || '🎁')}</div>
+        <div>
+          <h3>${esc(b.titulo || '')}</h3>
+          <p>${esc(b.texto || '')}</p>
+          ${b.valor ? `<span class="val">${esc(b.valor)}</span>` : ''}
+        </div>
+      </div>`;
+    }).join('');
+
+    // adiciona bônus à lista de inclusos na oferta
+    const inc = $('#offer-includes');
+    CONFIG.bonus.forEach(b => {
+      if(typeof b === 'string') b = { titulo:b };
+      const li = document.createElement('li');
+      li.innerHTML = `<b>Bônus:</b>&nbsp;${esc(b.titulo || '')}`;
+      inc.appendChild(li);
+    });
+  } else {
+    const bs = $('#bonus-section'); if(bs) bs.style.display='none';
+  }
+
+  // ---- FAQ ----
+  if(Array.isArray(CONFIG.faq) && CONFIG.faq.length){
+    $('#faq-list').innerHTML = CONFIG.faq.map(f => {
+      // aceita {p,r} ou {pergunta,resposta}
+      const q = f.p || f.pergunta || '';
+      const a = f.r || f.resposta || '';
+      return `
+      <details class="faq-item reveal">
+        <summary>${esc(q)}<span class="plus">+</span></summary>
+        <div class="ans"><p>${esc(a)}</p></div>
+      </details>`;
+    }).join('');
+  }
+
+  // ---- 8. Depoimentos ----
+  if(CONFIG.mostrar_depoimentos && Array.isArray(CONFIG.depoimentos) && CONFIG.depoimentos.length){
+    $('#testimonials-section').style.display = '';
+    $('#tst-grid').innerHTML = CONFIG.depoimentos.map(t => {
+      const initial = (t.nome || '?').trim().charAt(0).toUpperCase();
+      return `
+      <div class="tst reveal">
+        <div class="stars">★★★★★</div>
+        <p>“${esc(t.texto)}”</p>
+        <div class="who">
+          <i>${esc(initial)}</i>
+          <div>
+            <div class="nm">${esc(t.nome || '')}</div>
+            <div class="rl">${esc(t.papel || '')} <span class="verified">✔ verificado</span></div>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  // ---- Countdown (24h rotativo, apenas urgência visual) ----
+  (function(){
+    const H = $('#cd-h'), M = $('#cd-m'), S = $('#cd-s');
+    if(!H) return;
+    const KEY = 'zion_offer_deadline';
+    let deadline = parseInt(localStorage.getItem(KEY) || '0', 10);
+    const now = Date.now();
+    if(!deadline || deadline < now){
+      deadline = now + 24*60*60*1000; // 24h
+      try{ localStorage.setItem(KEY, String(deadline)); }catch(e){}
+    }
+    function tick(){
+      let diff = Math.max(0, deadline - Date.now());
+      const h = Math.floor(diff/3.6e6); diff -= h*3.6e6;
+      const m = Math.floor(diff/6e4); diff -= m*6e4;
+      const s = Math.floor(diff/1e3);
+      H.textContent = String(h).padStart(2,'0');
+      M.textContent = String(m).padStart(2,'0');
+      S.textContent = String(s).padStart(2,'0');
+    }
+    tick(); setInterval(tick, 1000);
+  })();
+
+  // ---- Scroll reveal ----
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold:0.12, rootMargin:'0px 0px -40px 0px' });
+  $$('.reveal').forEach(el=> io.observe(el));
+
+  // ---- Sticky mobile CTA (aparece após o hero) ----
+  const sticky = $('#sticky-cta');
+  const hero = $('.hero');
+  const offer = $('#oferta');
+  const stickyIO = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.target === hero){
+        if(!e.isIntersecting) sticky.classList.add('show');
+        else sticky.classList.remove('show');
+      }
+    });
+  }, { threshold:0 });
+  if(hero) stickyIO.observe(hero);
+  // esconde a barra quando a oferta está visível
+  if(offer){
+    const offerIO = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting) sticky.classList.remove('show'); });
+    }, { threshold:0.2 });
+    offerIO.observe(offer);
+  }
+
+  // ---- Documentos legais (placeholder) ----
+  $$('[data-doc]').forEach(a=>{
+    a.addEventListener('click', (ev)=>{
+      ev.preventDefault();
+      const map = {
+        terms: 'Termos de Uso — substitua este link pelo seu documento oficial.',
+        privacy: 'Política de Privacidade — substitua este link pelo seu documento oficial.',
+        disclaimer: 'Aviso Legal — este é um produto educacional; os resultados variam.'
+      };
+      alert(map[a.dataset.doc] || '');
+    });
+  });
+})();
+</script>
+</body>
+</html>
