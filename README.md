@@ -12,16 +12,17 @@
 
 > Everything (HTML, CSS and JS) lives in a single file, with no CDNs — it works offline and loads instantly.
 
-## ✅ Before you go live — 3 things to replace
+## ✅ Before you go live — 4 things to replace
 
 | What | Where | Current value |
 |------|-------|---------------|
 | **Hotmart checkout link** | `CONFIG.checkout_url` | `https://pay.hotmart.com/REPLACE-WITH-YOUR-HOTMART-CHECKOUT-LINK` |
-| **Cover image** (optional) | `CONFIG.capa` | *empty → uses the built-in cover recreation* |
+| **Your real domain (SEO)** | `<head>`: canonical, `og:url`, `og:image`, `twitter:image` | `https://www.example.com` placeholders |
+| **Cover image** | `CONFIG.capa` + `assets/cover.jpg` | real cover already in place |
 | **Legal document links** | footer `data-doc` links | placeholder alerts |
 
 ### About the cover
-`CONFIG.capa` is empty, so the page renders a **built-in cover** that faithfully recreates the printed cover (dark background, gold heart divider, title, gold italic subtitle, `ZION — Digital Content`). To use the real cover photo, host the image and set `CONFIG.capa` to its URL — it will replace the built-in cover automatically (and fall back to it if the URL fails to load).
+`CONFIG.capa` points to `assets/cover.jpg` (the real, optimized cover). If the image ever fails to load, the page falls back to a **built-in CSS cover** that recreates the printed design. For another ebook, just replace `assets/cover.jpg` (or point `CONFIG.capa` to any URL).
 
 ## 🧩 Page structure (conversion framework)
 
@@ -46,7 +47,7 @@
 {
   "titulo": "Headline — use a dash (—) to color-highlight the second part",
   "subtitulo": "Emotional subheadline",
-  "cta": "I Want to Win Them Back",
+  "cta": "I Want Instant Access",
   "capa": "https://.../cover.jpg   (empty = built-in cover)",
   "cor_primaria": "#d62e4f",
   "checkout_url": "https://pay.hotmart.com/your-product",
@@ -76,6 +77,16 @@
 
 > The keys are kept in Portuguese for backward compatibility across the Zion Productions template library — all customer-facing copy is in English.
 
+## ⚡ Performance & SEO (built-in)
+
+- **Lightweight HTML (~55 KB)** — images live in `assets/`, not inlined, so first paint is fast
+- Hero cover is **preloaded** with `fetchpriority="high"` (best LCP); the second copy lazy-loads
+- Images carry intrinsic `width`/`height` → **no layout shift (CLS)**
+- Optimized progressive JPEG cover (900px, ~170 KB) and trimmed PNG logo (~7 KB)
+- **Structured data (JSON-LD)** generated automatically from `CONFIG`: `Product` (name, price, availability) + `FAQPage` (Google rich results)
+- Full meta set: canonical, robots, Open Graph (incl. `og:image` 900×1274), Twitter Card
+- No external requests: no CDNs, no webfonts, no trackers — nothing blocks rendering
+
 ## ✅ Built-in conversion (CRO) features
 
 - Emotional headline with color highlight on the trigger phrase
@@ -87,7 +98,6 @@
 - **7-day guarantee** seal (risk reversal)
 - FAQ accordion for objection handling
 - Scroll-reveal animations (respect `prefers-reduced-motion`)
-- Basic SEO / Open Graph in the `<head>`
 
 ## ⚖️ Footer & compliance
 
