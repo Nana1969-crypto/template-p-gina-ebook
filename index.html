@@ -488,7 +488,7 @@
       <a class="brand" href="#top" aria-label="Zion Productions">
         <img class="brand-logo" src="assets/logo.png" alt="Zion Productions" width="242" height="177" decoding="async" />
       </a>
-      <a href="#offer" class="btn header-cta-hide" data-cta>Get instant access</a>
+      <a href="https://pay.hotmart.com/W97667477Y" class="btn header-cta-hide" data-cta>Get instant access</a>
     </div>
   </header>
 
@@ -510,7 +510,7 @@
             </p>
 
             <div class="hero-actions">
-              <a href="#offer" class="btn btn--lg btn-pulse" data-cta id="hero-cta">
+              <a href="https://pay.hotmart.com/W97667477Y" class="btn btn--lg btn-pulse" data-cta id="hero-cta">
                 I Want Instant Access
                 <span class="btn__sub">Instant access • 7-day guarantee</span>
               </a>
@@ -597,7 +597,7 @@
               <span class="chip"><span class="d"></span> Free updates</span>
             </div>
             <div style="margin-top:28px;">
-              <a href="#offer" class="btn" data-cta>I want my copy</a>
+              <a href="https://pay.hotmart.com/W97667477Y" class="btn" data-cta>I want my copy</a>
             </div>
           </div>
         </div>
@@ -649,7 +649,7 @@
             </div>
             <div class="price-note">or <b>up to 3×</b> on your card • 100% secure checkout via Hotmart</div>
 
-            <a href="#" class="btn btn--lg btn--block btn-pulse" data-checkout id="offer-cta">
+            <a href="https://pay.hotmart.com/W97667477Y" class="btn btn--lg btn--block btn-pulse" data-checkout id="offer-cta">
               I Want Instant Access
               <span class="btn__sub">Access unlocked seconds after purchase</span>
             </a>
@@ -730,7 +730,7 @@
         <span class="eyebrow">The decision is yours</span>
         <h2 style="margin-top:14px;">A week from now, you'll wish you had started today</h2>
         <p>Every day that passes without action is one more day of distance. You already know what silence does. What if you did things differently, starting now?</p>
-        <a href="#offer" class="btn btn--lg btn-pulse" data-cta>
+        <a href="https://pay.hotmart.com/W97667477Y" class="btn btn--lg btn-pulse" data-cta>
           I Want Instant Access
           <span class="btn__sub">Instant access • 7-day guarantee • Zero risk</span>
         </a>
@@ -766,7 +766,7 @@
   <div class="sticky-cta" id="sticky-cta">
     <div class="wrap">
       <div class="price-sm"><b>$27</b><span>$47 • today</span></div>
-      <a href="#offer" class="btn" data-cta>Get it now</a>
+      <a href="https://pay.hotmart.com/W97667477Y" class="btn" data-cta>Get Instant Access</a>
     </div>
   </div>
 
@@ -914,8 +914,10 @@ const CONFIG = {
   }
 
   // ---- Checkout links ----
+  // CRO: every CTA opens the checkout directly (no internal scroll). CONFIG.checkout_url
+  // is the single source of truth — change it here and all buttons update at once.
   const checkout = CONFIG.checkout_url || '#';
-  $$('[data-checkout]').forEach(a => a.setAttribute('href', checkout));
+  $$('[data-checkout], [data-cta]').forEach(a => a.setAttribute('href', checkout));
 
   // ---- Price ----
   if(CONFIG.preco){
