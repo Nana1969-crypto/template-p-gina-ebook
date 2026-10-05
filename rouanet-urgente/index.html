@@ -665,9 +665,8 @@
           <img class="brand-logo" src="assets/logo-zion.png" alt="Zion Produções" width="235" height="180" />
         </a>
         <nav class="footer-links" aria-label="Rodapé">
-          <a href="#" data-doc="termos">Termos de Uso</a>
-          <a href="#" data-doc="privacidade">Política de Privacidade</a>
-          <a href="#" data-doc="aviso">Aviso Legal</a>
+          <a href="termos.html">Termos de Uso</a>
+          <a href="privacidade.html">Política de Privacidade</a>
         </nav>
       </div>
       <div class="footer-meta">
@@ -694,8 +693,9 @@
    Toda a página é montada a partir daqui.
    ============================================================ */
 const CONFIG = {
-  "titulo": "Tire sua ideia da gaveta — e envie seu projeto em 3 dias",
-  "subtitulo": "O Guia Rouanet Urgente te pega pela mão: da ideia solta ao projeto organizado e pronto para o SALIC. Feito para quem nunca apresentou um projeto pela Lei Rouanet e não sabe por onde começar.",
+  "titulo": "Entre a sua gaveta e o Ministério da Cultura existem só 3 degraus.",
+  "destaque": "só 3 degraus",   // trecho da headline que recebe a cor de destaque
+  "subtitulo": "Um roteiro de 3 dias para quem nunca apresentou nada e quer começar do jeito certo na Lei Rouanet.",
   "cta": "Quero enviar meu projeto urgente",
   "capa": "assets/capa.webp",
   "cor_primaria": "#edb85c",
@@ -814,10 +814,20 @@ const CONFIG = {
 
   // ---- Textos principais ----
   if(CONFIG.titulo){
-    const parts = CONFIG.titulo.split('—');
-    $('#hero-title').innerHTML = parts.length > 1
-      ? esc(parts[0].trim()) + ' <span class="hl">' + esc(parts.slice(1).join('—').trim()) + '</span>'
-      : esc(CONFIG.titulo);
+    // Destaque: usa CONFIG.destaque se existir; senão, o trecho após o travessão.
+    const t = CONFIG.titulo;
+    if(CONFIG.destaque && t.includes(CONFIG.destaque)){
+      const i = t.indexOf(CONFIG.destaque);
+      $('#hero-title').innerHTML =
+        esc(t.slice(0, i)) +
+        '<span class="hl">' + esc(CONFIG.destaque) + '</span>' +
+        esc(t.slice(i + CONFIG.destaque.length));
+    } else {
+      const parts = t.split('—');
+      $('#hero-title').innerHTML = parts.length > 1
+        ? esc(parts[0].trim()) + ' <span class="hl">' + esc(parts.slice(1).join('—').trim()) + '</span>'
+        : esc(t);
+    }
   }
   if(CONFIG.subtitulo) $('#hero-sub').textContent = CONFIG.subtitulo;
 
@@ -977,12 +987,6 @@ const CONFIG = {
       }), { threshold:.2 }).observe(oferta);
     }
   }
-
-  // ---- Documentos legais (placeholder) ----
-  $$('[data-doc]').forEach(a => a.addEventListener('click', ev => {
-    ev.preventDefault();
-    alert('Substitua este link pelo seu documento oficial.');
-  }));
 
   // ---- SEO: dados estruturados gerados do CONFIG ----
   const canonical = $('link[rel="canonical"]');
