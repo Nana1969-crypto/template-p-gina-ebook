@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Página de vendas: How to Reconquer Lost Love (inglês) -->
+  <!-- Página principal da Zion Produções -->
   <url>
     <loc>https://ziondigitalvault.com/</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Guia Rouanet Urgente (português) -->
+  <url>
+    <loc>https://ziondigitalvault.com/rouanet/</loc>
     <lastmod>2026-10-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- Página de vendas: Guia Rouanet Urgente (português) -->
+  <!-- How to Reconquer Lost Love (inglês) -->
   <url>
-    <loc>https://ziondigitalvault.com/rouanet-urgente/</loc>
+    <loc>https://ziondigitalvault.com/reconquer/</loc>
     <lastmod>2026-10-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -18,13 +26,13 @@
 
   <!-- Documentos legais -->
   <url>
-    <loc>https://ziondigitalvault.com/rouanet-urgente/termos.html</loc>
+    <loc>https://ziondigitalvault.com/rouanet/termos.html</loc>
     <lastmod>2026-10-05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://ziondigitalvault.com/rouanet-urgente/privacidade.html</loc>
+    <loc>https://ziondigitalvault.com/rouanet/privacidade.html</loc>
     <lastmod>2026-10-05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
