@@ -1,9 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Página de vendas: How to Reconquer Lost Love (inglês) -->
   <url>
     <loc>https://ziondigitalvault.com/</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+
+  <!-- Página de vendas: Guia Rouanet Urgente (português) -->
+  <url>
+    <loc>https://ziondigitalvault.com/rouanet-urgente/</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Documentos legais -->
+  <url>
+    <loc>https://ziondigitalvault.com/rouanet-urgente/termos.html</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://ziondigitalvault.com/rouanet-urgente/privacidade.html</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>
