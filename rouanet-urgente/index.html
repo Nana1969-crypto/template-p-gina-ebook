@@ -3,618 +3,1016 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="theme-color" content="#05080f" />
-<title>Rouanet Urgente — Desafio de 3 Dias | Da ideia ao projeto enviado</title>
-<meta name="description" content="Guia prático em PDF para organizar seu primeiro projeto pela Lei Rouanet em 3 dias: da ideia ao cadastro no SALIC. Edição 2026. R$ 37. Prazo de apresentação: 31/10/2026." />
+<meta name="theme-color" content="#0d1019" />
+<title>Guia Rouanet Urgente — Desafio de 3 Dias | Da ideia ao projeto enviado</title>
+<meta name="description" content="Guia prático em PDF para organizar seu primeiro projeto pela Lei Rouanet em 3 dias: da ideia ao projeto enviado. Edição 2026. R$ 37. Prazo de apresentação: 31/10/2026." />
 <meta name="author" content="Zion Produções" />
 <meta name="robots" content="index, follow, max-image-preview:large" />
 
-<!-- SEO: troque pelo domínio real antes de publicar -->
+<!-- SEO: troque SEU-DOMINIO pelo domínio real antes de publicar -->
 <link rel="canonical" href="https://SEU-DOMINIO.com.br/" />
 
-<!-- Open Graph -->
+<!-- Open Graph / redes sociais -->
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Zion Produções" />
 <meta property="og:url" content="https://SEU-DOMINIO.com.br/" />
-<meta property="og:title" content="Rouanet Urgente — Desafio de 3 Dias" />
-<meta property="og:description" content="Da ideia ao projeto enviado. Um guia prático de 3 dias para organizar seu primeiro projeto pela Lei Rouanet e chegar ao SALIC com clareza. R$ 37." />
+<meta property="og:title" content="Guia Rouanet Urgente — Desafio de 3 Dias" />
+<meta property="og:description" content="Da ideia ao projeto enviado. O guia prático que organiza seu primeiro projeto pela Lei Rouanet em 3 dias. R$ 37." />
+<meta property="og:image" content="https://SEU-DOMINIO.com.br/assets/capa.jpg" />
+<meta property="og:image:width" content="860" />
+<meta property="og:image:height" content="1290" />
+<meta property="og:image:alt" content="Capa do Guia Rouanet Urgente — Desafio de 3 Dias" />
 <meta property="og:locale" content="pt_BR" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Rouanet Urgente — Desafio de 3 Dias" />
-<meta name="twitter:description" content="Da ideia ao projeto enviado. Organize seu primeiro projeto pela Lei Rouanet em 3 dias. R$ 37." />
+<meta name="twitter:title" content="Guia Rouanet Urgente — Desafio de 3 Dias" />
+<meta name="twitter:description" content="Da ideia ao projeto enviado. Seu primeiro projeto Rouanet organizado em 3 dias. R$ 37." />
+<meta name="twitter:image" content="https://SEU-DOMINIO.com.br/assets/capa.jpg" />
+
+<!-- Performance: capa é o maior elemento da primeira dobra (LCP) -->
+<link rel="preload" as="image" href="assets/capa.webp" fetchpriority="high" />
 
 <style>
-  /* ===========================================================
-     ROUANET URGENTE — Zion Produções
-     Direção: cinematográfica · cultural · premium · editorial
-     Mobile-first. Sem dependências externas.
-     =========================================================== */
+  /* ============================================================
+     GUIA ROUANET URGENTE — ZION PRODUÇÕES
+     Mesma arquitetura da landing page da Zion: tudo é controlado
+     pelo objeto CONFIG no <script> ao final do arquivo.
+     Paleta extraída da capa do produto: dourado, azul-elétrico e
+     fundo profundo. Tom: acolhedor, vivo, nada burocrático.
+     ============================================================ */
 
   :root{
-    /* Cor */
-    --ink:#05080f;
-    --navy-deep:#0a1327;
-    --navy:#112043;
-    --navy-soft:#16264c;
-    --gold:#d4ac5e;
-    --gold-bright:#f2d692;
-    --gold-deep:#9b7526;
-    --gold-line:rgba(212,172,94,.22);
-    --gold-glow:rgba(212,172,94,.14);
-    --silver:#eef1f7;
-    --muted:#94a2bb;
-    --electric:#4f8cff;
-    --mint:#5fd3a6;
-
-    /* Tipografia */
-    --serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,'Times New Roman',serif;
-    --sans:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
-
-    --maxw:720px;
-    --radius:4px;
+    --primary:#edb85c;              /* dourado da capa — injetado via CONFIG.cor_primaria */
+    --primary-strong:#c8913a;
+    --primary-soft:rgba(237,184,92,.15);
+    --ink-on-primary:#241803;       /* texto escuro sobre botão dourado (contraste alto) */
+    --blue:#1e80c4;                 /* azul-elétrico da porta da capa */
+    --blue-soft:rgba(30,128,196,.16);
+    --bg:#0d1019;
+    --bg-elev:#141926;
+    --bg-card:#171d2c;
+    --line:rgba(255,255,255,.09);
+    --gold-line:rgba(237,184,92,.22);
+    --text:#f3f1ea;
+    --muted:#a2a9ba;
+    --white:#fff;
+    --success:#5fd3a6;
+    --warn:#f0b429;
+    --radius:20px;
+    --radius-sm:14px;
+    --shadow-lg:0 30px 80px -20px rgba(0,0,0,.7);
+    --shadow-glow:0 22px 60px -14px var(--primary-soft);
+    --maxw:1120px;
+    --font:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    --font-display:'Poppins',var(--font);
   }
 
   *{ box-sizing:border-box; }
   html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
   body{
-    margin:0;
-    background:var(--ink);
-    color:var(--silver);
-    font-family:var(--sans);
-    font-size:17px;
-    line-height:1.65;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:var(--font); font-size:17px; line-height:1.65;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
   }
   img{ max-width:100%; display:block; }
   a{ color:inherit; text-decoration:none; }
-  p{ margin:0 0 1.1em; }
-
-  /* Grão de filme — textura cinematográfica */
-  body::after{
-    content:""; position:fixed; inset:0; z-index:100; pointer-events:none; opacity:.035;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-
+  h1,h2,h3{ font-family:var(--font-display); line-height:1.16; margin:0 0 .4em; font-weight:800; letter-spacing:-.02em; }
+  h1{ font-size:clamp(2rem,5.6vw,3.3rem); }
+  h2{ font-size:clamp(1.65rem,4.2vw,2.5rem); }
+  h3{ font-size:clamp(1.12rem,2vw,1.4rem); }
+  p{ margin:0 0 1rem; color:var(--muted); }
+  strong{ color:var(--text); }
   .wrap{ width:100%; max-width:var(--maxw); margin:0 auto; padding:0 22px; }
   section{ position:relative; }
 
-  /* ---------- Tipografia ---------- */
-  h1,h2,h3{ font-family:var(--serif); font-weight:600; margin:0 0 .5em; letter-spacing:-.01em; }
-  h1{ font-size:clamp(2rem,7.5vw,3.1rem); line-height:1.14; }
-  h2{ font-size:clamp(1.6rem,5.6vw,2.3rem); line-height:1.2; }
-  h3{ font-size:1.18rem; line-height:1.3; }
-  .lead{ font-size:clamp(1.03rem,3.6vw,1.18rem); color:var(--muted); }
-
-  .eyebrow{
-    display:inline-block; font-family:var(--sans); font-size:.7rem; font-weight:700;
-    letter-spacing:.2em; text-transform:uppercase; color:var(--gold);
-  }
-  .rule{ width:46px; height:1px; background:var(--gold); opacity:.65; margin:0 0 22px; }
-  .rule--c{ margin-left:auto; margin-right:auto; }
-  .center{ text-align:center; }
-
   /* ---------- Botões ---------- */
   .btn{
-    display:block; width:100%; text-align:center;
-    background:linear-gradient(135deg,var(--gold-bright),var(--gold) 45%,var(--gold-deep));
-    color:#0b1020; font-family:var(--sans); font-weight:800;
-    font-size:clamp(.98rem,3.6vw,1.08rem); letter-spacing:.04em; text-transform:uppercase;
-    padding:21px 24px; border:none; border-radius:var(--radius); cursor:pointer;
-    box-shadow:0 14px 38px -14px rgba(212,172,94,.6);
-    transition:transform .2s ease, box-shadow .2s ease, filter .2s ease;
+    --pad-y:19px; --pad-x:30px;
+    display:inline-flex; align-items:center; justify-content:center; flex-direction:column;
+    background:linear-gradient(135deg,#f7d08a,var(--primary) 45%,var(--primary-strong));
+    color:var(--ink-on-primary); font-family:var(--font-display); font-weight:800;
+    font-size:clamp(1rem,1.6vw,1.14rem); letter-spacing:.01em; text-align:center;
+    padding:var(--pad-y) var(--pad-x); border:none; border-radius:999px;
+    cursor:pointer; line-height:1.25; position:relative; overflow:hidden; max-width:100%;
+    box-shadow:0 16px 38px -12px rgba(237,184,92,.6), inset 0 1px 0 rgba(255,255,255,.45);
+    transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
   }
-  .btn:hover{ transform:translateY(-2px); box-shadow:0 20px 48px -14px rgba(212,172,94,.75); filter:brightness(1.05); }
-  .btn:active{ transform:translateY(0); }
-  .btn:focus-visible{ outline:2px solid var(--electric); outline-offset:3px; }
-  .btn-note{ margin:13px 0 0; font-size:.82rem; color:var(--muted); text-align:center; }
-  @media(min-width:620px){
-    .btn{ display:inline-block; width:auto; min-width:360px; }
-    .btn-wrap{ text-align:center; }
+  .btn::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.45) 50%,transparent 70%);
+    transform:translateX(-120%); transition:transform .7s ease;
+  }
+  .btn:hover{ transform:translateY(-3px); box-shadow:0 24px 52px -12px rgba(237,184,92,.75); filter:brightness(1.04); }
+  .btn:hover::after{ transform:translateX(120%); }
+  .btn:active{ transform:translateY(-1px) scale(.99); }
+  .btn:focus-visible{ outline:3px solid var(--blue); outline-offset:3px; }
+  .btn--lg{ --pad-y:23px; --pad-x:40px; font-size:clamp(1.05rem,1.9vw,1.3rem); }
+  .btn--block{ display:flex; width:100%; }
+  .btn__sub{ display:block; font-size:.74rem; font-weight:600; opacity:.72; margin-top:3px; }
+  .btn-pulse{ animation:pulse 2.6s ease-in-out infinite; }
+  @keyframes pulse{
+    0%,100%{ box-shadow:0 16px 38px -12px rgba(237,184,92,.6), 0 0 0 0 var(--primary-soft); }
+    50%{ box-shadow:0 16px 38px -12px rgba(237,184,92,.6), 0 0 0 18px transparent; }
   }
 
-  /* ---------- Barra de prazo (topo) ---------- */
-  .deadline-bar{
-    background:linear-gradient(90deg,var(--navy-deep),var(--navy) 50%,var(--navy-deep));
-    border-bottom:1px solid var(--gold-line);
-    text-align:center; padding:10px 16px;
-    font-size:.74rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase;
-    color:var(--gold);
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--font-display); font-weight:700; font-size:.76rem;
+    letter-spacing:.16em; text-transform:uppercase; color:var(--primary);
+    background:var(--primary-soft); padding:8px 16px; border-radius:999px;
+    border:1px solid var(--gold-line);
+  }
+  .center{ text-align:center; }
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+
+  /* ---------- Barra de prazo ---------- */
+  .topbar{
+    background:linear-gradient(90deg,var(--primary-strong),var(--primary) 50%,var(--primary-strong));
+    color:var(--ink-on-primary); font-size:.86rem; font-weight:800; text-align:center;
+    padding:10px 16px; position:relative; z-index:20;
   }
 
-  /* ---------- Header ---------- */
-  .site-header{ padding:22px 0; }
-  .site-header .wrap{ display:flex; justify-content:center; }
-  .logo{ height:38px; width:auto; opacity:.96; }
+  /* ---------- Cabeçalho ---------- */
+  .site-header{
+    position:sticky; top:0; z-index:30;
+    backdrop-filter:blur(12px); background:rgba(13,16,25,.82);
+    border-bottom:1px solid var(--line);
+  }
+  .site-header .wrap{ display:flex; align-items:center; justify-content:space-between; height:70px; }
+  .brand-logo{ height:48px; width:auto; }
+  .site-footer .brand-logo{ height:56px; opacity:.85; }
+  .site-header .btn{ --pad-y:12px; --pad-x:22px; font-size:.9rem; }
+  .header-cta-hide{ display:none; }
+  @media(min-width:860px){ .header-cta-hide{ display:inline-flex; } }
 
   /* ---------- Hero ---------- */
-  .hero{ padding:28px 0 64px; overflow:hidden; }
+  .hero{ padding:52px 0 60px; overflow:hidden; }
   .hero::before{
-    content:""; position:absolute; inset:-120px -20% auto -20%; height:720px; z-index:0; pointer-events:none;
+    content:""; position:absolute; inset:-20% -10% auto -10%; height:720px; z-index:0; pointer-events:none;
     background:
-      radial-gradient(620px 420px at 50% 4%, var(--gold-glow), transparent 68%),
-      radial-gradient(900px 600px at 50% 38%, rgba(17,32,67,.85), transparent 72%);
+      radial-gradient(640px 400px at 76% 10%, var(--primary-soft), transparent 70%),
+      radial-gradient(620px 420px at 14% 34%, var(--blue-soft), transparent 70%);
   }
   .hero .wrap{ position:relative; z-index:1; }
-  .hero h1{ margin-top:14px; }
-  .hero h1 em{ font-style:normal; color:var(--gold); }
-  .hero .lead{ max-width:38ch; }
+  .hero-grid{ display:grid; grid-template-columns:1fr; gap:40px; align-items:center; }
+  @media(min-width:960px){ .hero-grid{ grid-template-columns:1.02fr .98fr; gap:54px; } }
+  .hero h1 .hl{ color:var(--primary); }
+  .hero .sub{ font-size:clamp(1.04rem,1.8vw,1.22rem); color:var(--muted); max-width:46ch; }
+  .hero .sub strong{ color:var(--text); }
+  .hero-actions{ margin-top:26px; }
+  .hero-note{ margin:14px 0 0; font-size:.88rem; color:var(--muted); }
 
-  /* Capa do guia (mockup) */
-  .cover-stage{ perspective:1200px; margin:34px 0 30px; display:flex; justify-content:center; }
-  .cover{
-    width:min(248px,62%); aspect-ratio:1/1.414; position:relative; overflow:hidden;
-    border-radius:3px; border:1px solid var(--gold-line);
-    background:linear-gradient(165deg,#15264e,#0a1327 62%,#060b18);
-    box-shadow:0 36px 70px -26px rgba(0,0,0,.9), 0 0 0 1px rgba(255,255,255,.03);
-    transform:rotateY(-13deg) rotateX(5deg);
+  /* Capa em mockup 3D */
+  .cover-stage{ position:relative; display:grid; place-items:center; perspective:1400px; }
+  .cover-glow{
+    position:absolute; inset:6% 10%; z-index:0; filter:blur(54px);
+    background:radial-gradient(circle at 50% 45%, var(--primary), transparent 66%); opacity:.4;
+  }
+  .ebook{
+    position:relative; z-index:1; width:min(330px,76%);
+    border-radius:8px 14px 14px 8px; overflow:hidden;
+    box-shadow:var(--shadow-lg), -14px 0 0 -4px rgba(0,0,0,.4);
+    transform:rotateY(-15deg) rotateX(4deg) rotateZ(1deg);
     transition:transform .6s cubic-bezier(.2,.7,.2,1);
-    display:flex; flex-direction:column; justify-content:space-between;
-    padding:26px 20px 20px; text-align:center;
+    border:1px solid var(--gold-line); aspect-ratio:860/1290;
   }
-  .cover:hover{ transform:rotateY(-6deg) rotateX(2deg); }
-  .cover::before{ /* lombada */
-    content:""; position:absolute; left:0; top:0; bottom:0; width:9px;
-    background:linear-gradient(90deg,rgba(0,0,0,.6),rgba(255,255,255,.07) 70%,transparent);
+  .cover-stage:hover .ebook{ transform:rotateY(-7deg) rotateX(2deg); }
+  .ebook::before{
+    content:""; position:absolute; left:0; top:0; bottom:0; width:13px; z-index:3;
+    background:linear-gradient(90deg,rgba(0,0,0,.4),rgba(255,255,255,.1) 60%,transparent);
   }
-  .cover::after{ /* brilho */
-    content:""; position:absolute; inset:0; pointer-events:none;
-    background:linear-gradient(118deg,rgba(255,255,255,.12),transparent 38%);
+  .ebook::after{
+    content:""; position:absolute; inset:0; z-index:2; pointer-events:none;
+    background:linear-gradient(115deg,rgba(255,255,255,.14) 0%,transparent 36%);
   }
-  .cover .cv-brand{ font-size:.52rem; letter-spacing:.26em; text-transform:uppercase; color:var(--gold); font-weight:700; }
-  .cover .cv-mid{ padding:0 2px; }
-  .cover .cv-title{ font-family:var(--serif); font-size:1.42rem; line-height:1.08; color:var(--silver); margin:0; }
-  .cover .cv-title span{ display:block; color:var(--gold); }
-  .cover .cv-sub{
-    font-size:.56rem; letter-spacing:.2em; text-transform:uppercase; color:var(--muted);
-    margin:11px 0 0; padding-top:10px; border-top:1px solid var(--gold-line);
+  .ebook img{ width:100%; height:100%; object-fit:cover; }
+  .cover-badge{
+    position:absolute; z-index:4; right:-4%; top:2%;
+    background:var(--bg-card); border:1px solid var(--gold-line);
+    border-radius:16px; padding:12px 16px; box-shadow:var(--shadow-lg);
+    display:flex; align-items:center; gap:10px; transform:rotate(3deg);
   }
-  .cover .cv-foot{ font-size:.5rem; letter-spacing:.24em; text-transform:uppercase; color:var(--muted); }
-
-  /* Preço no hero */
-  .price-line{ display:flex; align-items:baseline; justify-content:center; gap:10px; margin:0 0 20px; }
-  .price-line .cur{ font-family:var(--serif); font-size:1.2rem; color:var(--gold); }
-  .price-line .num{ font-family:var(--serif); font-size:clamp(2.8rem,11vw,3.6rem); line-height:1; color:var(--silver); }
-  .price-line .cents{ font-family:var(--serif); font-size:1.3rem; color:var(--muted); }
+  .cover-badge .n{ font-family:var(--font-display); font-weight:800; font-size:1.2rem; color:var(--primary); }
+  .cover-badge .l{ font-size:.68rem; color:var(--muted); line-height:1.2; }
+  .cover-badge .ic{ font-size:1.3rem; }
+  .cover-badge.bl{ right:auto; left:-4%; top:auto; bottom:6%; transform:rotate(-3deg); }
+  @media(max-width:600px){ .cover-badge{ display:none; } }
 
   /* ---------- Seções ---------- */
-  .sec{ padding:56px 0; }
-  .sec--band{
-    background:linear-gradient(180deg,transparent,var(--navy-deep) 18%,var(--navy-deep) 82%,transparent);
-    border-top:1px solid var(--gold-line); border-bottom:1px solid var(--gold-line);
-  }
+  .sec{ padding:70px 0; }
+  .sec--tight{ padding:52px 0; }
+  .sec-head{ max-width:740px; margin:0 auto 44px; text-align:center; }
+  .sec-head p{ font-size:1.06rem; }
 
-  /* Citação / objeção */
-  .quote{ font-family:var(--serif); font-weight:400; font-size:clamp(1.45rem,5.6vw,2rem); line-height:1.28; color:var(--silver); margin:0 0 20px; }
-  .flow{
-    display:flex; flex-wrap:wrap; gap:8px; align-items:center;
-    margin:22px 0; font-size:.9rem; color:var(--muted);
+  /* ---------- Dores ---------- */
+  .pain{ background:linear-gradient(180deg,transparent,rgba(0,0,0,.25)); }
+  .pain-grid{ display:grid; gap:18px; grid-template-columns:1fr; }
+  @media(min-width:640px){ .pain-grid{ grid-template-columns:1fr 1fr; } }
+  .pain-card{
+    background:var(--bg-card); border:1px solid var(--line); border-radius:var(--radius);
+    padding:26px 24px; display:flex; gap:15px; align-items:flex-start;
   }
-  .flow span{ background:var(--navy); border:1px solid var(--gold-line); border-radius:999px; padding:7px 14px; white-space:nowrap; }
-  .flow i{ color:var(--gold); font-style:normal; }
-  .pullquote{
-    border-left:2px solid var(--gold); padding:4px 0 4px 20px; margin:26px 0 0;
-    font-family:var(--serif); font-size:clamp(1.2rem,4.6vw,1.5rem); line-height:1.3; color:var(--gold-bright);
+  .pain-card .x{
+    flex:0 0 auto; width:40px; height:40px; border-radius:12px; display:grid; place-items:center;
+    background:var(--blue-soft); font-size:1.2rem;
   }
+  .pain-card h3{ font-size:1.08rem; margin-bottom:5px; }
+  .pain-card p{ margin:0; font-size:.96rem; }
 
-  /* ---------- Método 3 dias (timeline) ---------- */
-  .days{ margin-top:34px; position:relative; }
-  .days::before{ /* linha vertical mobile */
-    content:""; position:absolute; left:26px; top:14px; bottom:14px; width:1px;
-    background:linear-gradient(180deg,transparent,var(--gold-line) 12%,var(--gold-line) 88%,transparent);
+  /* ---------- Virada de chave ---------- */
+  .insight-box{
+    background:
+      radial-gradient(700px 320px at 100% 0%, var(--primary-soft), transparent 70%),
+      var(--bg-elev);
+    border:1px solid var(--gold-line); border-radius:28px; padding:clamp(30px,5vw,56px);
+    box-shadow:var(--shadow-lg); position:relative; overflow:hidden;
   }
-  .day{ position:relative; padding:0 0 30px 70px; }
-  .day:last-child{ padding-bottom:0; }
-  .day .n{
-    position:absolute; left:0; top:-6px; width:53px; text-align:center;
-    font-family:var(--serif); font-size:2rem; color:var(--gold);
-    background:var(--ink); padding:4px 0;
-  }
-  .day .k{ font-size:.68rem; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); display:block; margin-bottom:3px; }
-  .day h3{ color:var(--gold-bright); margin-bottom:5px; letter-spacing:.02em; }
-  .day p{ margin:0; color:var(--muted); font-size:.97rem; }
-  @media(min-width:760px){
-    .days{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
-    .days::before{ left:8%; right:8%; top:18px; bottom:auto; width:auto; height:1px;
-      background:linear-gradient(90deg,transparent,var(--gold-line) 12%,var(--gold-line) 88%,transparent); }
-    .day{ padding:48px 0 0; text-align:center; }
-    .day .n{ left:50%; transform:translateX(-50%); top:0; }
-  }
+  .insight-box h2{ max-width:22ch; }
+  .insight-box p{ font-size:1.1rem; max-width:62ch; }
+  .insight-box .lead{ color:var(--text); font-weight:600; font-size:1.2rem; }
 
-  /* ---------- Lista do que recebe ---------- */
-  .gets{ list-style:none; padding:0; margin:30px 0 0; display:grid; gap:1px; background:var(--gold-line); border:1px solid var(--gold-line); }
-  .gets li{
-    display:flex; gap:13px; align-items:flex-start;
-    background:var(--navy-deep); padding:15px 17px; font-size:.97rem;
+  /* ---------- Os 3 dias ---------- */
+  .dias-grid{ display:grid; gap:20px; grid-template-columns:1fr; }
+  @media(min-width:800px){ .dias-grid{ grid-template-columns:repeat(3,1fr); } }
+  .dia{
+    position:relative; background:linear-gradient(165deg,rgba(237,184,92,.07),var(--bg-card) 52%);
+    border:1px solid var(--gold-line); border-radius:var(--radius); padding:30px 26px 28px;
+    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
   }
-  .gets li:first-child{ background:var(--navy); font-weight:600; }
-  .gets .ck{ color:var(--mint); flex:0 0 auto; font-weight:700; line-height:1.6; }
+  .dia:hover{ transform:translateY(-5px); border-color:rgba(237,184,92,.45); box-shadow:var(--shadow-glow); }
+  .dia .num{
+    font-family:var(--font-display); font-weight:800; font-size:2.6rem; line-height:1;
+    color:transparent; -webkit-text-stroke:1.5px var(--primary); margin-bottom:12px;
+  }
+  .dia .k{ font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; color:var(--primary); font-weight:700; display:block; margin-bottom:4px; }
+  .dia h3{ margin-bottom:7px; }
+  .dia p{ margin:0; font-size:.96rem; }
+
+  /* ---------- Apresentação ---------- */
+  .present-grid{ display:grid; grid-template-columns:1fr; gap:44px; align-items:center; }
+  @media(min-width:900px){ .present-grid{ grid-template-columns:.82fr 1.18fr; } }
+  .present-list{ list-style:none; padding:0; margin:22px 0 0; display:grid; gap:13px; }
+  .present-list li{ display:flex; gap:13px; align-items:flex-start; }
+  .present-list .ic{
+    flex:0 0 auto; width:28px; height:28px; border-radius:50%; display:grid; place-items:center;
+    background:var(--primary-soft); color:var(--primary); font-weight:800; font-size:.88rem;
+  }
+  .present-list li span{ color:var(--muted); font-size:.98rem; }
+  .present-list li b{ color:var(--text); }
+  .meta-chips{ display:flex; flex-wrap:wrap; gap:10px; margin-top:26px; }
+  .chip{
+    display:inline-flex; align-items:center; gap:7px; font-size:.86rem; color:var(--text);
+    background:var(--bg-card); border:1px solid var(--line); padding:9px 15px; border-radius:999px;
+  }
+  .chip .d{ width:7px; height:7px; border-radius:50%; background:var(--success); }
+
+  /* ---------- Benefícios ---------- */
+  .benefits-grid{ display:grid; gap:20px; grid-template-columns:1fr; }
+  @media(min-width:640px){ .benefits-grid{ grid-template-columns:1fr 1fr; } }
+  @media(min-width:980px){ .benefits-grid{ grid-template-columns:repeat(3,1fr); } }
+  .benefit{
+    background:var(--bg-card); border:1px solid var(--line); border-radius:var(--radius);
+    padding:28px 26px; transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  }
+  .benefit:hover{ transform:translateY(-5px); border-color:var(--gold-line); box-shadow:var(--shadow-glow); }
+  .benefit .ic{
+    width:54px; height:54px; border-radius:16px; display:grid; place-items:center; font-size:1.55rem;
+    background:linear-gradient(140deg,var(--primary-soft),transparent);
+    border:1px solid var(--gold-line); margin-bottom:16px;
+  }
+  .benefit h3{ font-size:1.14rem; }
+  .benefit p{ margin:0; font-size:.95rem; }
 
   /* ---------- Para quem é ---------- */
-  .forwho{ list-style:none; padding:0; margin:26px 0 0; display:grid; gap:13px; }
-  .forwho li{ display:flex; gap:13px; align-items:flex-start; font-size:1rem; }
-  .forwho .dot{ flex:0 0 auto; width:7px; height:7px; border-radius:50%; background:var(--gold); margin-top:10px; }
+  .forwho{ list-style:none; padding:0; margin:0; display:grid; gap:14px; max-width:680px; margin:0 auto; }
+  .forwho li{
+    display:flex; gap:14px; align-items:flex-start; font-size:1.02rem;
+    background:var(--bg-card); border:1px solid var(--line); border-radius:var(--radius-sm); padding:16px 20px;
+  }
+  .forwho .ck{ color:var(--success); font-weight:800; flex:0 0 auto; }
 
   /* ---------- Prazo ---------- */
-  .deadline{
-    text-align:center;
-    background:
-      radial-gradient(520px 300px at 50% 0%, rgba(79,140,255,.10), transparent 70%),
-      var(--navy-deep);
-    border-top:1px solid var(--gold-line); border-bottom:1px solid var(--gold-line);
+  .prazo-box{
+    text-align:center; border:1px solid var(--gold-line); border-radius:28px;
+    background:radial-gradient(620px 320px at 50% 0%, var(--blue-soft), transparent 70%), var(--bg-elev);
+    padding:clamp(32px,5vw,52px); box-shadow:var(--shadow-lg);
   }
-  .stamp{
-    display:inline-block; border:1px solid var(--gold); border-radius:var(--radius);
-    padding:16px 26px; margin:4px 0 22px;
-  }
-  .stamp .lbl{ font-size:.66rem; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
-  .stamp .date{ font-family:var(--serif); font-size:clamp(1.7rem,7vw,2.3rem); color:var(--gold-bright); line-height:1.15; }
-  .countdown{ font-size:.95rem; color:var(--muted); margin:0 0 26px; }
-  .countdown b{ color:var(--silver); font-family:var(--serif); font-size:1.25rem; }
+  .stamp{ display:inline-block; border:2px dashed var(--primary); border-radius:18px; padding:16px 28px; margin:8px 0 20px; }
+  .stamp .lbl{ font-size:.7rem; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); }
+  .stamp .date{ font-family:var(--font-display); font-weight:800; font-size:clamp(1.8rem,6vw,2.4rem); color:var(--primary); line-height:1.2; }
+  .countdown-real{ font-size:1.02rem; color:var(--muted); margin:0 0 24px; }
+  .countdown-real b{ color:var(--text); font-family:var(--font-display); font-size:1.4rem; }
 
-  /* ---------- Oferta final ---------- */
+  /* ---------- Oferta ---------- */
+  .offer{ background:linear-gradient(180deg,rgba(0,0,0,.3),transparent); }
   .offer-card{
-    border:1px solid var(--gold-line); border-radius:var(--radius);
-    background:linear-gradient(170deg,var(--navy),var(--navy-deep) 70%);
-    padding:36px 24px; text-align:center; margin-top:30px;
-    box-shadow:0 30px 70px -32px rgba(0,0,0,.9);
+    max-width:620px; margin:0 auto; background:var(--bg-card);
+    border:1px solid var(--gold-line); border-radius:28px; overflow:hidden; box-shadow:var(--shadow-lg);
   }
-  .offer-card .pname{ font-family:var(--serif); font-size:clamp(1.7rem,6.4vw,2.2rem); color:var(--gold-bright); line-height:1.12; margin:0 0 6px; }
-  .offer-card .psub{ font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); margin:0 0 22px; }
-  .offer-card .divider{ width:100%; height:1px; background:var(--gold-line); margin:22px 0; }
+  .offer-card .top{
+    background:linear-gradient(135deg,var(--primary),var(--primary-strong));
+    color:var(--ink-on-primary); text-align:center; padding:20px;
+    font-family:var(--font-display); font-weight:800; font-size:1.02rem;
+  }
+  .offer-card .body{ padding:clamp(26px,4vw,40px); text-align:center; }
+  .offer-includes{ list-style:none; padding:0; margin:0 auto 26px; max-width:400px; text-align:left; display:grid; gap:12px; }
+  .offer-includes li{ display:flex; gap:11px; align-items:flex-start; color:var(--muted); font-size:.97rem; }
+  .offer-includes li::before{ content:"✓"; color:var(--success); font-weight:800; flex:0 0 auto; }
+  .offer-includes li b{ color:var(--text); }
+  .price{ display:flex; align-items:baseline; justify-content:center; gap:10px; margin:6px 0 4px; flex-wrap:wrap; }
+  .price .now{ font-family:var(--font-display); font-weight:800; font-size:clamp(2.6rem,8vw,3.6rem); color:var(--text); line-height:1; }
+  .price-note{ font-size:.92rem; color:var(--muted); margin-bottom:22px; }
+  .price-note b{ color:var(--primary); }
+  .pay-badges{ display:flex; align-items:center; justify-content:center; gap:14px; margin-top:20px; flex-wrap:wrap; color:var(--muted); font-size:.82rem; }
+
+  /* ---------- Garantia ---------- */
+  .guarantee-box{
+    display:grid; grid-template-columns:1fr; gap:28px; align-items:center;
+    background:linear-gradient(135deg,rgba(95,211,166,.08),var(--bg-elev));
+    border:1px solid rgba(95,211,166,.26); border-radius:28px; padding:clamp(28px,4vw,46px);
+  }
+  @media(min-width:760px){ .guarantee-box{ grid-template-columns:170px 1fr; gap:38px; } }
+  .seal{
+    width:170px; max-width:50vw; margin:0 auto; aspect-ratio:1; border-radius:50%;
+    background:radial-gradient(circle at 50% 35%,#133828,#0c2119);
+    border:3px solid var(--success); display:grid; place-items:center; text-align:center;
+    box-shadow:0 0 0 8px rgba(95,211,166,.1), var(--shadow-lg);
+  }
+  .seal .big{ font-family:var(--font-display); font-weight:800; font-size:2.9rem; color:var(--success); line-height:1; }
+  .seal .sm{ font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:#b9f0d9; margin-top:2px; }
+  .guarantee-box p{ font-size:1.02rem; margin-bottom:0; }
+
+  /* ---------- Depoimentos ---------- */
+  .tst-grid{ display:grid; gap:20px; grid-template-columns:1fr; max-width:900px; margin:0 auto; }
+  @media(min-width:760px){ .tst-grid{ grid-template-columns:1fr 1fr; } }
+  .tst{
+    background:linear-gradient(160deg,rgba(237,184,92,.06),var(--bg-card) 55%);
+    border:1px solid var(--gold-line); border-radius:var(--radius); padding:30px 28px;
+    display:flex; flex-direction:column; gap:16px; position:relative;
+  }
+  .tst .mark{ font-family:Georgia,serif; font-size:3rem; line-height:1; color:var(--primary); opacity:.5; }
+  .tst p{ margin:0; color:var(--text); font-size:1.02rem; line-height:1.6; }
+  .tst .who{ display:flex; align-items:center; gap:13px; margin-top:auto; }
+  .tst .who i{
+    width:46px; height:46px; border-radius:50%; flex:0 0 auto;
+    background:linear-gradient(135deg,var(--primary),var(--primary-strong));
+    display:grid; place-items:center; color:var(--ink-on-primary);
+    font-family:var(--font-display); font-weight:800; font-style:normal;
+  }
+  .tst .who .nm{ font-weight:700; font-size:.98rem; }
 
   /* ---------- FAQ ---------- */
-  .faq{ margin-top:30px; border-top:1px solid var(--gold-line); }
-  .faq details{ border-bottom:1px solid var(--gold-line); }
-  .faq summary{
-    list-style:none; cursor:pointer; padding:19px 34px 19px 0; position:relative;
-    font-family:var(--serif); font-size:1.08rem; color:var(--silver);
+  .faq-list{ max-width:780px; margin:0 auto; display:grid; gap:12px; }
+  .faq-item{ background:var(--bg-card); border:1px solid var(--line); border-radius:var(--radius-sm); overflow:hidden; transition:border-color .2s ease; }
+  .faq-item[open]{ border-color:var(--gold-line); }
+  .faq-item summary{
+    list-style:none; cursor:pointer; padding:20px 22px; display:flex; align-items:center; justify-content:space-between; gap:16px;
+    font-family:var(--font-display); font-weight:600; font-size:1.02rem; color:var(--text);
   }
-  .faq summary::-webkit-details-marker{ display:none; }
-  .faq summary::after{
-    content:"+"; position:absolute; right:4px; top:50%; transform:translateY(-50%);
-    color:var(--gold); font-family:var(--sans); font-size:1.3rem; transition:transform .25s ease;
+  .faq-item summary::-webkit-details-marker{ display:none; }
+  .faq-item summary .plus{
+    flex:0 0 auto; width:28px; height:28px; border-radius:50%; border:1px solid var(--gold-line);
+    display:grid; place-items:center; transition:transform .25s ease, background .25s ease;
+    color:var(--primary); font-weight:700;
   }
-  .faq details[open] summary::after{ transform:translateY(-50%) rotate(45deg); }
-  .faq .ans{ padding:0 0 20px; color:var(--muted); font-size:.97rem; }
-  .faq .ans p{ margin:0; }
+  .faq-item[open] summary .plus{ transform:rotate(45deg); background:var(--primary-soft); }
+  .faq-item .ans{ padding:0 22px 20px; }
+  .faq-item .ans p{ margin:0; }
 
   /* ---------- CTA final ---------- */
   .final{
     text-align:center;
     background:
-      radial-gradient(640px 400px at 50% 100%, var(--gold-glow), transparent 70%),
-      linear-gradient(180deg,transparent,var(--navy-deep));
-    padding:66px 0 72px;
+      radial-gradient(700px 400px at 50% 0%, var(--primary-soft), transparent 70%),
+      linear-gradient(180deg,transparent,rgba(0,0,0,.35));
   }
-  .final h2{ max-width:16ch; margin-left:auto; margin-right:auto; }
+  .final h2{ max-width:20ch; margin-left:auto; margin-right:auto; }
+  .final p{ max-width:52ch; margin-left:auto; margin-right:auto; font-size:1.06rem; }
+  .final .micro{ margin-top:18px; font-size:.86rem; color:var(--muted); }
 
   /* ---------- Rodapé ---------- */
-  .site-footer{ border-top:1px solid var(--gold-line); padding:38px 0 44px; background:var(--ink); }
-  .footer-logo{ height:30px; width:auto; opacity:.6; margin:0 auto 20px; }
-  .legal{ font-size:.78rem; line-height:1.75; color:#6f7d94; text-align:center; }
-  .legal p{ margin:0 0 9px; }
-  .legal strong{ color:#94a2bb; }
+  .site-footer{ border-top:1px solid var(--line); padding:44px 0 40px; background:var(--bg-elev); }
+  .footer-top{ display:flex; flex-direction:column; gap:24px; align-items:center; justify-content:space-between; text-align:center; }
+  @media(min-width:760px){ .footer-top{ flex-direction:row; text-align:left; } }
+  .footer-links{ display:flex; gap:22px; flex-wrap:wrap; justify-content:center; font-size:.9rem; }
+  .footer-links a{ color:var(--muted); transition:color .2s ease; }
+  .footer-links a:hover{ color:var(--text); }
+  .footer-meta{ margin-top:26px; padding-top:24px; border-top:1px solid var(--line); font-size:.82rem; color:var(--muted); }
+  .footer-meta p{ margin:0 0 8px; font-size:.82rem; }
+  .disclaimer{ background:rgba(255,255,255,.03); border:1px solid var(--line); border-radius:14px; padding:16px 18px; margin-top:16px; font-size:.81rem; line-height:1.7; }
+  .disclaimer b{ color:var(--text); }
 
-  /* ---------- Reveal ---------- */
-  .rv{ opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; }
-  .rv.in{ opacity:1; transform:none; }
+  /* ---------- Barra fixa no celular ---------- */
+  .sticky-cta{
+    position:fixed; left:0; right:0; bottom:0; z-index:40;
+    padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+    background:rgba(13,16,25,.94); backdrop-filter:blur(12px); border-top:1px solid var(--gold-line);
+    transform:translateY(120%); transition:transform .35s ease;
+  }
+  .sticky-cta.show{ transform:translateY(0); }
+  .sticky-cta .wrap{ display:flex; align-items:center; gap:14px; justify-content:space-between; }
+  .sticky-cta .price-sm b{ font-family:var(--font-display); font-size:1.3rem; color:var(--text); display:block; line-height:1.1; }
+  .sticky-cta .price-sm span{ display:block; font-size:.72rem; color:var(--muted); }
+  .sticky-cta .btn{ --pad-y:14px; --pad-x:22px; font-size:.94rem; white-space:nowrap; }
+  @media(min-width:860px){ .sticky-cta{ display:none; } }
+
   @media (prefers-reduced-motion:reduce){
     *{ animation:none!important; transition:none!important; scroll-behavior:auto!important; }
-    .rv{ opacity:1; transform:none; }
+    .reveal{ opacity:1; transform:none; }
   }
 </style>
 </head>
 <body>
 
-<!-- ===== Barra de prazo ===== -->
-<div class="deadline-bar">Prazo de apresentação: até 31/10/2026</div>
+  <!-- ===== Barra de prazo ===== -->
+  <div class="topbar" id="topbar"></div>
 
-<!-- ===== Header ===== -->
-<header class="site-header">
-  <div class="wrap">
-    <img class="logo" src="assets/logo.png" alt="Zion Produções" width="242" height="177" />
-  </div>
-</header>
-
-<main>
-
-  <!-- ===== 1. HERO ===== -->
-  <section class="hero">
+  <!-- ===== Cabeçalho ===== -->
+  <header class="site-header">
     <div class="wrap">
-      <div class="rv">
-        <span class="eyebrow">Guia prático · Edição 2026</span>
-        <h1>Seu primeiro projeto pela Lei Rouanet não precisa continuar <em>na gaveta</em>.</h1>
-        <p class="lead">O <strong>Rouanet Urgente</strong> é um guia prático de 3 dias para organizar sua ideia, estruturar seu projeto e chegar ao SALIC com muito mais clareza.</p>
-      </div>
+      <a class="brand" href="#top" aria-label="Zion Produções">
+        <img class="brand-logo" src="assets/logo-zion.png" alt="Zion Produções" width="235" height="180" />
+      </a>
+      <a href="#oferta" class="btn header-cta-hide" data-cta>Quero meu guia</a>
+    </div>
+  </header>
 
-      <div class="cover-stage rv">
-        <div class="cover">
-          <div class="cv-brand">Zion Produções</div>
-          <div class="cv-mid">
-            <div class="cv-title">Rouanet<span>Urgente</span></div>
-            <p class="cv-sub">Desafio de 3 dias<br />Da ideia ao projeto enviado</p>
+  <main id="top">
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div class="hero-copy reveal">
+            <span class="eyebrow" id="hero-eyebrow">Guia prático • Edição 2026</span>
+            <h1 id="hero-title" style="margin-top:16px;"></h1>
+            <p class="sub" id="hero-sub"></p>
+
+            <div class="hero-actions">
+              <a href="#oferta" class="btn btn--lg btn-pulse" data-cta id="hero-cta"></a>
+              <p class="hero-note">Acesso ao material digital após a compra.</p>
+            </div>
           </div>
-          <div class="cv-foot">Edição 2026 · Guia em PDF</div>
+
+          <div class="cover-stage reveal">
+            <div class="cover-glow"></div>
+            <div class="ebook" id="ebook-cover"></div>
+            <div class="cover-badge">
+              <span class="ic">⚡</span>
+              <div><div class="n">3 dias</div><div class="l">do zero ao<br>projeto enviado</div></div>
+            </div>
+            <div class="cover-badge bl">
+              <span class="ic">📄</span>
+              <div><div class="n">PDF</div><div class="l">acesso<br>imediato</div></div>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="rv">
-        <div class="price-line">
-          <span class="cur">R$</span><span class="num">37</span><span class="cents">,00</span>
+    <!-- ===== 1. DORES ===== -->
+    <section class="sec pain">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="eyebrow">Talvez você se reconheça</span>
+          <h2 style="margin-top:14px;">Não falta ideia. Falta um caminho.</h2>
+          <p>A maioria das pessoas não desiste por ter um projeto ruim. Desiste por não saber qual é o próximo passo.</p>
         </div>
-        <div class="btn-wrap">
-          <a class="btn" href="[LINK_DO_CHECKOUT]" data-checkout>Quero organizar meu projeto</a>
+        <div class="pain-grid" id="pain-grid"></div>
+      </div>
+    </section>
+
+    <!-- ===== 2. VIRADA DE CHAVE ===== -->
+    <section class="sec">
+      <div class="wrap">
+        <div class="insight-box reveal">
+          <span class="eyebrow">A virada de chave</span>
+          <h2 style="margin-top:14px;">Não comece pelo SALIC. Comece pelo projeto.</h2>
+          <p class="lead">Quase todo mundo abre o sistema primeiro, trava nos campos e conclui que "isso não é pra mim".</p>
+          <p>Só que o SALIC é a <strong>última</strong> etapa, não a primeira. Quando o projeto já está construído, os documentos reunidos e as informações conferidas, o cadastro deixa de ser um labirinto e vira o que sempre foi: um formulário. O Rouanet Urgente organiza essa sequência para você — <strong>um dia de cada vez</strong>.</p>
         </div>
-        <p class="btn-note">Acesso ao material digital após a compra.</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===== 2. QUEBRA DE OBJEÇÃO ===== -->
-  <section class="sec sec--band">
-    <div class="wrap rv">
-      <span class="eyebrow">O verdadeiro obstáculo</span>
-      <div class="rule" style="margin-top:14px;"></div>
-      <h2 class="quote">“Eu tenho uma ideia. Mas não faço ideia de por onde começar.”</h2>
-      <p>A dificuldade de um primeiro projeto não é apenas entender a Lei Rouanet. É saber a <strong>ordem das coisas</strong>:</p>
-      <div class="flow">
-        <span>o que fazer primeiro</span><i>→</i>
-        <span>o que organizar</span><i>→</i>
-        <span>o que conferir</span><i>→</i>
-        <span>quando entrar no SALIC</span>
+    <!-- ===== 3. OS 3 DIAS ===== -->
+    <section class="sec">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="eyebrow">O método</span>
+          <h2 style="margin-top:14px;">Um caminho simples, em 3 dias</h2>
+          <p>Cada dia resolve uma etapa. Sem pular passos e sem se perder no meio do caminho.</p>
+        </div>
+        <div class="dias-grid" id="dias-grid"></div>
       </div>
-      <p>Muita gente não desiste por falta de uma boa ideia. Desiste por não ter um caminho.</p>
-      <p class="pullquote">Não comece pelo SALIC.<br />Comece pelo projeto.</p>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===== 3. MÉTODO ===== -->
-  <section class="sec">
+    <!-- ===== 4. O QUE VOCÊ RECEBE ===== -->
+    <section class="sec" style="background:linear-gradient(180deg,rgba(0,0,0,.22),transparent);">
+      <div class="wrap">
+        <div class="present-grid">
+          <div class="cover-stage reveal">
+            <div class="cover-glow"></div>
+            <div class="ebook" id="ebook-cover-2" style="width:min(290px,84%);"></div>
+          </div>
+          <div class="reveal">
+            <span class="eyebrow">O que você recebe</span>
+            <h2 style="margin-top:14px;">Não é só um PDF para ler. É um roteiro para executar.</h2>
+            <p>Cada bloco do guia resolve uma parte concreta do seu projeto — na ordem certa, sem teoria desnecessária.</p>
+            <ul class="present-list" id="present-list"></ul>
+            <div class="meta-chips">
+              <span class="chip"><span class="d"></span> Formato PDF</span>
+              <span class="chip"><span class="d"></span> Leia no celular ou PC</span>
+              <span class="chip"><span class="d"></span> Acesso vitalício</span>
+              <span class="chip"><span class="d"></span> Edição 2026</span>
+            </div>
+            <div style="margin-top:28px;">
+              <a href="#oferta" class="btn" data-cta>Quero meu guia agora</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 5. BENEFÍCIOS ===== -->
+    <section class="sec">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="eyebrow">O que muda pra você</span>
+          <h2 style="margin-top:14px;">Da ideia parada ao projeto pronto para enviar</h2>
+          <p>Não é sobre entender toda a Lei Rouanet. É sobre colocar o <strong>seu</strong> projeto em ordem.</p>
+        </div>
+        <div class="benefits-grid" id="benefits-grid"></div>
+      </div>
+    </section>
+
+    <!-- ===== 6. PARA QUEM É ===== -->
+    <section class="sec sec--tight" style="background:linear-gradient(180deg,rgba(0,0,0,.22),transparent);">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="eyebrow">Para quem é</span>
+          <h2 style="margin-top:14px;">É para você que…</h2>
+        </div>
+        <ul class="forwho reveal" id="forwho-list"></ul>
+      </div>
+    </section>
+
+    <!-- ===== 7. PRAZO ===== -->
+    <section class="sec">
+      <div class="wrap">
+        <div class="prazo-box reveal">
+          <span class="eyebrow">Prazo</span>
+          <h2 style="margin-top:14px;">O calendário não espera</h2>
+          <div class="stamp">
+            <div class="lbl">Última data para enviar ao MinC</div>
+            <div class="date" id="prazo-data"></div>
+          </div>
+          <p class="countdown-real" id="countdown-real" aria-live="polite"></p>
+          <p style="max-width:46ch;margin:0 auto 26px;">Quanto antes seu projeto estiver organizado, mais tempo você terá para revisar com calma antes de enviar.</p>
+          <a href="#oferta" class="btn btn--lg" data-cta>Quero começar hoje</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 8. OFERTA ===== -->
+    <section class="sec offer" id="oferta">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="eyebrow">A oferta</span>
+          <h2 style="margin-top:14px;">Comece seu projeto hoje</h2>
+          <p>Acesso imediato ao guia completo. Pagamento único, sem mensalidade.</p>
+        </div>
+
+        <div class="offer-card reveal">
+          <div class="top">📘 Guia Rouanet Urgente — Edição 2026</div>
+          <div class="body">
+            <ul class="offer-includes" id="offer-includes"></ul>
+
+            <div class="price"><span class="now" id="preco-now">R$ 37</span></div>
+            <div class="price-note" id="price-note">Pagamento único • acesso imediato após a confirmação</div>
+
+            <a href="[LINK_DO_CHECKOUT]" class="btn btn--lg btn--block btn-pulse" data-checkout id="offer-cta"></a>
+
+            <div class="pay-badges">
+              <span>🔒 Compra segura</span>
+              <span>⚡ Entrega imediata</span>
+              <span>📱 Celular ou PC</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 9. GARANTIA ===== -->
+    <section class="sec">
+      <div class="wrap">
+        <div class="guarantee-box reveal">
+          <div class="seal">
+            <div>
+              <div class="big">7</div>
+              <div class="sm">dias de<br>garantia</div>
+            </div>
+          </div>
+          <div>
+            <span class="eyebrow" style="color:var(--success);background:rgba(95,211,166,.12);border-color:rgba(95,211,166,.22);">Risco zero</span>
+            <h2 style="margin-top:14px;">7 dias para decidir com calma</h2>
+            <p>Acesse o guia, leia e comece a organizar seu projeto. Se concluir que não é para você, basta pedir o reembolso em até 7 dias e receber <strong>100% do valor de volta</strong> — é o seu direito de arrependimento, previsto no Código de Defesa do Consumidor para compras online.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 10. DEPOIMENTOS ===== -->
+    <section class="sec" id="testimonials-section" style="display:none;background:linear-gradient(180deg,rgba(0,0,0,.22),transparent);">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="eyebrow">Quem já passou por isso</span>
+          <h2 style="margin-top:14px;">O que dizem sobre o trabalho da Zion</h2>
+        </div>
+        <div class="tst-grid" id="tst-grid"></div>
+      </div>
+    </section>
+
+    <!-- ===== 11. FAQ ===== -->
+    <section class="sec">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="eyebrow">Ainda com dúvidas?</span>
+          <h2 style="margin-top:14px;">Perguntas frequentes</h2>
+        </div>
+        <div class="faq-list" id="faq-list"></div>
+      </div>
+    </section>
+
+    <!-- ===== 12. CTA FINAL ===== -->
+    <section class="sec final">
+      <div class="wrap reveal">
+        <span class="eyebrow">A decisão é sua</span>
+        <h2 style="margin-top:14px;">Sua ideia pode continuar na gaveta. Ou pode virar projeto esta semana.</h2>
+        <p>Organizar o primeiro projeto é mais simples do que parece — quando alguém te mostra a ordem certa das coisas.</p>
+        <div style="margin-top:20px;">
+          <a href="#oferta" class="btn btn--lg btn-pulse" data-cta></a>
+        </div>
+        <div class="micro">🔒 Compra segura • 📄 Acesso imediato ao material digital</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Rodapé ===== -->
+  <footer class="site-footer">
     <div class="wrap">
-      <div class="rv">
-        <span class="eyebrow">O método</span>
-        <h2 style="margin-top:14px;">Um caminho simples em 3 dias.</h2>
-        <p class="lead">Cada dia resolve uma etapa. Sem pular passos, sem se perder no meio do caminho.</p>
+      <div class="footer-top">
+        <a class="brand" href="#top">
+          <img class="brand-logo" src="assets/logo-zion.png" alt="Zion Produções" width="235" height="180" />
+        </a>
+        <nav class="footer-links" aria-label="Rodapé">
+          <a href="#" data-doc="termos">Termos de Uso</a>
+          <a href="#" data-doc="privacidade">Política de Privacidade</a>
+          <a href="#" data-doc="aviso">Aviso Legal</a>
+        </nav>
       </div>
-
-      <div class="days rv">
-        <div class="day">
-          <div class="n">01</div>
-          <span class="k">Dia 1</span>
-          <h3>Construir</h3>
-          <p>Transforme sua ideia em um projeto estruturado.</p>
+      <div class="footer-meta">
+        <div class="disclaimer">
+          <b>Aviso:</b> o Guia Rouanet Urgente é um material educacional de organização e preparação de projetos. <b>Não garante aprovação</b> de projeto, captação de recursos ou qualquer resultado específico. Não substitui a legislação vigente, os sistemas oficiais nem as orientações do Ministério da Cultura — confira sempre as normas e os prazos oficiais. Este site não é afiliado ao Ministério da Cultura, ao Governo Federal, ao Facebook ou à Meta Platforms Inc.
         </div>
-        <div class="day">
-          <div class="n">02</div>
-          <span class="k">Dia 2</span>
-          <h3>Organizar</h3>
-          <p>Equipe, documentos, acessibilidade, cronograma e orçamento.</p>
-        </div>
-        <div class="day">
-          <div class="n">03</div>
-          <span class="k">Dia 3</span>
-          <h3>Cadastrar</h3>
-          <p>Confira tudo e leve seu projeto organizado para o SALIC.</p>
-        </div>
+        <p style="margin-top:18px;">Zion Produções © 2026 — Todos os direitos reservados.</p>
+        <p>CNPJ: 13.204.926/0001-40</p>
       </div>
     </div>
-  </section>
+  </footer>
 
-  <!-- ===== 4. O QUE VOCÊ RECEBE ===== -->
-  <section class="sec sec--band">
-    <div class="wrap rv">
-      <span class="eyebrow">O que você recebe</span>
-      <h2 style="margin-top:14px;">Você não recebe apenas um PDF para ler.</h2>
-      <p class="lead">Você recebe um roteiro para executar.</p>
-
-      <ul class="gets">
-        <li><span class="ck">✓</span> Guia Rouanet Urgente — Desafio de 3 Dias</li>
-        <li><span class="ck">✓</span> Estrutura para organizar o projeto</li>
-        <li><span class="ck">✓</span> Organização de documentos</li>
-        <li><span class="ck">✓</span> Ficha técnica e anuências</li>
-        <li><span class="ck">✓</span> Objetivo geral e objetivos específicos</li>
-        <li><span class="ck">✓</span> Acessibilidade e acesso do público</li>
-        <li><span class="ck">✓</span> Cronograma</li>
-        <li><span class="ck">✓</span> Orçamento</li>
-        <li><span class="ck">✓</span> Conferência antes do SALIC</li>
-        <li><span class="ck">✓</span> Anexos práticos</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ===== 5. PARA QUEM É ===== -->
-  <section class="sec">
-    <div class="wrap rv">
-      <span class="eyebrow">Para quem é</span>
-      <h2 style="margin-top:14px;">É para você que...</h2>
-      <ul class="forwho">
-        <li><span class="dot"></span> Tem uma ideia de projeto cultural.</li>
-        <li><span class="dot"></span> Nunca apresentou um projeto pela Lei Rouanet.</li>
-        <li><span class="dot"></span> Não sabe por onde começar.</li>
-        <li><span class="dot"></span> Tem dificuldade para organizar documentos e informações.</li>
-        <li><span class="dot"></span> Quer entender a sequência antes de entrar no SALIC.</li>
-        <li><span class="dot"></span> Precisa colocar seu projeto em ordem antes do prazo.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ===== 6. OBJEÇÃO ===== -->
-  <section class="sec sec--band">
-    <div class="wrap rv">
-      <span class="eyebrow">Uma dúvida comum</span>
-      <div class="rule" style="margin-top:14px;"></div>
-      <h2 class="quote">“Mas eu nunca fiz um projeto antes.”</h2>
-      <p>É justamente por isso que o Rouanet Urgente foi criado.</p>
-      <p>O material foi pensado para quem está <strong>começando agora</strong> e precisa de uma sequência clara para organizar o primeiro projeto — do papel em branco até a hora de cadastrar.</p>
-    </div>
-  </section>
-
-  <!-- ===== 7. PRAZO ===== -->
-  <section class="sec deadline">
-    <div class="wrap rv">
-      <span class="eyebrow">Prazo</span>
-      <h2 style="margin-top:14px;">O calendário não espera.</h2>
-
-      <div class="stamp">
-        <div class="lbl">Última data para enviar ao MinC</div>
-        <div class="date">31 · 10 · 2026</div>
-      </div>
-
-      <p class="countdown" id="countdown" aria-live="polite"></p>
-
-      <p class="lead" style="max-width:40ch;margin-left:auto;margin-right:auto;">Quanto antes você organizar seu projeto, mais tempo terá para revisar o que precisa ser enviado.</p>
-
-      <div class="btn-wrap" style="margin-top:26px;">
-        <a class="btn" href="[LINK_DO_CHECKOUT]" data-checkout>Começar meu projeto</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== 8. OFERTA FINAL ===== -->
-  <section class="sec">
-    <div class="wrap rv">
-      <div class="center">
-        <span class="eyebrow">A decisão</span>
-        <h2 style="margin-top:14px;max-width:20ch;margin-left:auto;margin-right:auto;">Seu projeto pode continuar na gaveta. Ou você pode começar a organizá-lo hoje.</h2>
-      </div>
-
-      <div class="offer-card">
-        <div class="eyebrow">Zion Produções apresenta</div>
-        <h3 class="pname" style="margin-top:12px;">Rouanet Urgente</h3>
-        <p class="psub">Desafio de 3 dias · Da ideia ao projeto enviado</p>
-
-        <div class="divider"></div>
-
-        <div class="price-line" style="margin-bottom:24px;">
-          <span class="cur">R$</span><span class="num">37</span><span class="cents">,00</span>
-        </div>
-
-        <a class="btn" href="[LINK_DO_CHECKOUT]" data-checkout>Quero o Rouanet Urgente</a>
-        <p class="btn-note">Pagamento único · Acesso ao material digital após a compra.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== 9. FAQ ===== -->
-  <section class="sec sec--band">
-    <div class="wrap rv">
-      <span class="eyebrow">Perguntas frequentes</span>
-      <h2 style="margin-top:14px;">Antes de decidir.</h2>
-
-      <div class="faq">
-        <details>
-          <summary>É um curso?</summary>
-          <div class="ans"><p>Não. É um guia prático em PDF, organizado como um desafio de 3 dias.</p></div>
-        </details>
-        <details>
-          <summary>Preciso já ter experiência com a Lei Rouanet?</summary>
-          <div class="ans"><p>Não. O material foi pensado especialmente para quem está começando.</p></div>
-        </details>
-        <details>
-          <summary>O guia garante a aprovação do projeto?</summary>
-          <div class="ans"><p>Não. O material é um roteiro de organização e preparação. A aprovação depende da análise e das regras aplicáveis ao projeto.</p></div>
-        </details>
-        <details>
-          <summary>Preciso saber usar o SALIC?</summary>
-          <div class="ans"><p>O guia orienta a sequência de preparação e cadastro, mas não substitui o sistema nem a legislação oficial.</p></div>
-        </details>
-        <details>
-          <summary>O material é atualizado?</summary>
-          <div class="ans"><p>Esta é a Edição 2026, baseada nas referências normativas utilizadas na elaboração do produto. O comprador deve sempre conferir a legislação e as orientações oficiais vigentes.</p></div>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== 10. CTA FINAL ===== -->
-  <section class="final">
-    <div class="wrap rv">
-      <h2>Pare de deixar sua ideia para depois.</h2>
-      <p class="lead" style="max-width:34ch;margin-left:auto;margin-right:auto;">Organize seu primeiro projeto em 3 dias.</p>
-
-      <div class="rule rule--c" style="margin:26px auto;"></div>
-
-      <p style="font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;">Prazo de apresentação: 31/10/2026</p>
-
-      <div class="price-line"><span class="cur">R$</span><span class="num">37</span><span class="cents">,00</span></div>
-
-      <div class="btn-wrap">
-        <a class="btn" href="[LINK_DO_CHECKOUT]" data-checkout>Quero começar agora</a>
-      </div>
-      <p class="btn-note">Acesso ao material digital após a compra.</p>
-    </div>
-  </section>
-
-</main>
-
-<!-- ===== Rodapé ===== -->
-<footer class="site-footer">
-  <div class="wrap">
-    <img class="footer-logo" src="assets/logo.png" alt="Zion Produções" width="242" height="177" />
-    <div class="legal">
-      <p><strong>Aviso:</strong> o Rouanet Urgente é um material educacional de organização e preparação de projetos. <strong>Não garante aprovação</strong> de projeto, captação de recursos ou qualquer resultado específico.</p>
-      <p>Este material não substitui a legislação vigente, os sistemas oficiais nem as orientações do Ministério da Cultura. Confira sempre as normas e prazos oficiais.</p>
-      <p>Este site não é afiliado ao Ministério da Cultura, ao Governo Federal, ao Facebook ou à Meta Platforms Inc.</p>
-      <p style="margin-top:16px;">Zion Produções © 2026 — Todos os direitos reservados.</p>
-      <p>CNPJ: 13.204.926/0001-40</p>
+  <!-- ===== Barra fixa no celular ===== -->
+  <div class="sticky-cta" id="sticky-cta">
+    <div class="wrap">
+      <div class="price-sm"><b id="sticky-preco">R$ 37</b><span id="sticky-prazo"></span></div>
+      <a href="#oferta" class="btn" data-cta>Quero meu guia</a>
     </div>
   </div>
-</footer>
 
 <script>
+/* ============================================================
+   CONFIGURAÇÃO — edite apenas este objeto para adaptar a página.
+   Toda a página é montada a partir daqui.
+   ============================================================ */
+const CONFIG = {
+  "titulo": "Tire sua ideia da gaveta — e envie seu projeto em 3 dias",
+  "subtitulo": "O Guia Rouanet Urgente te pega pela mão: da ideia solta ao projeto organizado e pronto para o SALIC. Feito para quem nunca apresentou um projeto pela Lei Rouanet e não sabe por onde começar.",
+  "cta": "Quero enviar meu projeto urgente",
+  "capa": "assets/capa.webp",
+  "cor_primaria": "#edb85c",
+  "checkout_url": "[LINK_DO_CHECKOUT]",
+  "nome_produto": "Guia Rouanet Urgente",
+  "preco": "R$ 37",
+  "prazo": "2026-10-31",            // prazo real — alimenta a contagem regressiva
+  "prazo_label": "31 / 10 / 2026",
+
+  // 1. DORES
+  "dores": [
+    { "icone": "💡", "titulo": "A ideia existe. O caminho, não.", "texto": "Você sabe exatamente o projeto que quer realizar — mas trava na hora de transformar isso em documento." },
+    { "icone": "🌀", "titulo": "Cada campo do SALIC vira uma dúvida", "texto": "Você abre o sistema, vê termos que não entende e fecha achando que precisa contratar um especialista." },
+    { "icone": "📎", "titulo": "Documentos espalhados por todo lado", "texto": "Ficha técnica, anuências, orçamento, cronograma… você sabe que precisa, mas não sabe por onde juntar." },
+    { "icone": "📅", "titulo": "O prazo encurtando", "texto": "Cada semana sem organizar o projeto é uma semana a menos para revisar tudo antes de enviar." }
+  ],
+
+  // 2. OS 3 DIAS
+  "dias": [
+    { "num": "01", "k": "Dia 1", "titulo": "Construir", "texto": "Transforme sua ideia em um projeto estruturado, com objetivo geral e objetivos específicos bem escritos." },
+    { "num": "02", "k": "Dia 2", "titulo": "Organizar", "texto": "Equipe, ficha técnica, anuências, acessibilidade, cronograma e orçamento — cada coisa no seu lugar." },
+    { "num": "03", "k": "Dia 3", "titulo": "Cadastrar", "texto": "Confira tudo com a lista de conferência e leve seu projeto organizado para o SALIC." }
+  ],
+
+  // 3. O QUE VOCÊ RECEBE
+  "conteudo": [
+    { "titulo": "Guia Rouanet Urgente", "texto": "o Desafio de 3 Dias completo, em PDF." },
+    { "titulo": "Estrutura para organizar o projeto", "texto": "o esqueleto que transforma ideia em documento." },
+    { "titulo": "Organização de documentos", "texto": "o que reunir e em que ordem, sem esquecer nada." },
+    { "titulo": "Ficha técnica e anuências", "texto": "como montar e o que cada uma precisa conter." },
+    { "titulo": "Objetivo geral e objetivos específicos", "texto": "como escrever de forma clara e coerente." },
+    { "titulo": "Acessibilidade e acesso do público", "texto": "pensado desde o início, não no fim." },
+    { "titulo": "Cronograma", "texto": "como distribuir as etapas do seu projeto." },
+    { "titulo": "Orçamento", "texto": "como estruturar os custos de forma organizada." },
+    { "titulo": "Conferência antes do SALIC", "texto": "a lista para revisar tudo antes de cadastrar." },
+    { "titulo": "Anexos práticos", "texto": "material de apoio para usar enquanto monta." }
+  ],
+
+  // 4. BENEFÍCIOS
+  "beneficios": [
+    { "icone": "🧭", "titulo": "Clareza do começo ao fim", "texto": "Você sempre sabe qual é o próximo passo, sem se perder entre abas e termos técnicos." },
+    { "icone": "📂", "titulo": "Tudo reunido num lugar só", "texto": "Documentos, ficha técnica e anuências organizados antes mesmo de abrir o sistema." },
+    { "icone": "⏱️", "titulo": "Rapidez sem atropelo", "texto": "Três dias de trabalho guiado no lugar de meses adiando por não saber começar." },
+    { "icone": "🎯", "titulo": "Objetivos bem escritos", "texto": "Aprenda a formular objetivo geral e específicos que descrevem seu projeto com precisão." },
+    { "icone": "♿", "titulo": "Acessibilidade desde o início", "texto": "Em vez de lembrar disso no final, você já estrutura o acesso do público desde o começo." },
+    { "icone": "✅", "titulo": "Confiança na hora de enviar", "texto": "Uma lista de conferência para revisar tudo com calma antes do cadastro." }
+  ],
+
+  // 5. PARA QUEM É
+  "para_quem": [
+    "Tem uma ideia de projeto cultural guardada.",
+    "Nunca apresentou um projeto pela Lei Rouanet.",
+    "Não sabe por onde começar.",
+    "Tem dificuldade para organizar documentos e informações.",
+    "Quer entender a sequência antes de entrar no SALIC.",
+    "Precisa colocar o projeto em ordem antes do prazo."
+  ],
+
+  // 6. O QUE ESTÁ INCLUSO NA OFERTA (partes reais do guia — não são bônus extras)
+  "oferta_inclui": [
+    { "b": "Guia Rouanet Urgente", "t": "o Desafio de 3 Dias completo, em PDF" },
+    { "b": "Estrutura do projeto", "t": "objetivos, ficha técnica e anuências" },
+    { "b": "Organização prática", "t": "documentos, cronograma e orçamento" },
+    { "b": "Lista de conferência", "t": "para revisar tudo antes do SALIC" },
+    { "b": "Anexos práticos", "t": "material de apoio para usar enquanto monta" },
+    { "b": "Acesso vitalício", "t": "Edição 2026, para ler no celular ou no PC" }
+  ],
+
+  // 7. FAQ
+  "faq": [
+    { "p": "É um curso?", "r": "Não. É um guia prático em PDF, organizado como um desafio de 3 dias." },
+    { "p": "Preciso já ter experiência com a Lei Rouanet?", "r": "Não. O material foi pensado especialmente para quem está começando agora." },
+    { "p": "O guia garante a aprovação do projeto?", "r": "Não. O material é um roteiro de organização e preparação. A aprovação depende da análise e das regras aplicáveis ao projeto." },
+    { "p": "Preciso saber usar o SALIC?", "r": "O guia orienta a sequência de preparação e cadastro, mas não substitui o sistema nem a legislação oficial." },
+    { "p": "O material é atualizado?", "r": "Esta é a Edição 2026, baseada nas referências normativas utilizadas na elaboração do produto. O comprador deve sempre conferir a legislação e as orientações oficiais vigentes." },
+    { "p": "Como recebo o material?", "r": "O acesso é 100% digital e imediato. Assim que o pagamento é confirmado, o guia é liberado para você baixar e começar no mesmo dia." }
+  ],
+
+  // 8. DEPOIMENTOS (reais)
+  "mostrar_depoimentos": true,
+  "depoimentos": [
+    { "nome": "Roberto Torres", "texto": "A Zion consegue, de forma didática, direcionar artistas de vários segmentos a colocarem seus projetos no papel e enviar ao MinC pela primeira vez." },
+    { "nome": "Ricardo Glavam", "texto": "Graças à Zion, o projeto da minha ONG foi bem-sucedido no Ministério da Cultura." }
+  ]
+};
+
+/* ============================================================
+   RENDERIZAÇÃO — não é necessário editar daqui para baixo.
+   ============================================================ */
 (function(){
   "use strict";
+  const $  = (s, el=document) => el.querySelector(s);
+  const $$ = (s, el=document) => [...el.querySelectorAll(s)];
+  const esc = (str='') => String(str).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
-  /* ===========================================================
-     CONFIGURAÇÃO — troque apenas esta linha quando tiver o link.
-     Ela atualiza TODOS os botões da página de uma vez.
-     =========================================================== */
-  const CHECKOUT_URL = "[LINK_DO_CHECKOUT]";
+  // ---- Cor primária ----
+  function hexToRgb(hex){
+    hex = hex.replace('#','');
+    if(hex.length===3) hex = hex.split('').map(c=>c+c).join('');
+    const n = parseInt(hex,16);
+    return { r:(n>>16)&255, g:(n>>8)&255, b:n&255 };
+  }
+  function darken(hex, amt){
+    const {r,g,b} = hexToRgb(hex);
+    const d = v => Math.max(0, Math.round(v*(1-amt)));
+    return `rgb(${d(r)},${d(g)},${d(b)})`;
+  }
+  if(CONFIG.cor_primaria){
+    const root = document.documentElement.style;
+    const {r,g,b} = hexToRgb(CONFIG.cor_primaria);
+    root.setProperty('--primary', CONFIG.cor_primaria);
+    root.setProperty('--primary-strong', darken(CONFIG.cor_primaria, .25));
+    root.setProperty('--primary-soft', `rgba(${r},${g},${b},.15)`);
+    root.setProperty('--gold-line', `rgba(${r},${g},${b},.22)`);
+  }
 
-  const DEADLINE = new Date(2026, 9, 31, 23, 59, 59); // 31/10/2026
+  // ---- Textos principais ----
+  if(CONFIG.titulo){
+    const parts = CONFIG.titulo.split('—');
+    $('#hero-title').innerHTML = parts.length > 1
+      ? esc(parts[0].trim()) + ' <span class="hl">' + esc(parts.slice(1).join('—').trim()) + '</span>'
+      : esc(CONFIG.titulo);
+  }
+  if(CONFIG.subtitulo) $('#hero-sub').textContent = CONFIG.subtitulo;
 
-  const $$ = (s) => Array.prototype.slice.call(document.querySelectorAll(s));
+  // ---- CTA em todos os botões (fonte única de verdade) ----
+  const CTA = CONFIG.cta || 'Quero meu guia';
+  $('#hero-cta').innerHTML = esc(CTA) + '<span class="btn__sub">Acesso imediato • Garantia de 7 dias</span>';
+  $('#offer-cta').innerHTML = esc(CTA) + '<span class="btn__sub">Liberado em segundos após a compra</span>';
+  $('.final .btn[data-cta]').innerHTML = esc(CTA) + '<span class="btn__sub">Acesso imediato • Risco zero</span>';
+  const checkout = CONFIG.checkout_url || '#';
+  $$('[data-checkout]').forEach(a => a.setAttribute('href', checkout));
 
-  // --- Checkout em todos os CTAs ---
-  $$("[data-checkout]").forEach(function(a){ a.setAttribute("href", CHECKOUT_URL); });
+  // ---- Capa ----
+  if(CONFIG.capa){
+    $$('#ebook-cover, #ebook-cover-2').forEach((cover, i) => {
+      const img = document.createElement('img');
+      img.src = CONFIG.capa;
+      img.alt = 'Capa do ' + (CONFIG.nome_produto || 'guia');
+      img.width = 860; img.height = 1290; img.decoding = 'async';
+      if(i === 0) img.fetchPriority = 'high'; else img.loading = 'lazy';
+      cover.appendChild(img);
+    });
+  }
 
-  // --- Contagem real de dias até o prazo (sem escassez artificial) ---
-  const cd = document.getElementById("countdown");
-  if (cd) {
-    const today = new Date();
-    const startOfDay = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-    const days = Math.ceil((DEADLINE - startOfDay) / 86400000);
-    if (days > 1) {
-      cd.innerHTML = "Faltam <b>" + days + "</b> dias para o prazo de apresentação.";
-    } else if (days === 1) {
-      cd.innerHTML = "Falta <b>1</b> dia para o prazo de apresentação.";
-    } else if (days === 0) {
-      cd.innerHTML = "<b>Hoje</b> é o último dia do prazo de apresentação.";
-    } else {
-      cd.style.display = "none";
+  // ---- Preço ----
+  if(CONFIG.preco){
+    $('#preco-now').textContent = CONFIG.preco;
+    $('#sticky-preco').textContent = CONFIG.preco;
+  }
+
+  // ---- Prazo real (sem contador falso) ----
+  const PRAZO = CONFIG.prazo ? new Date(CONFIG.prazo + 'T23:59:59') : null;
+  if(CONFIG.prazo_label) $('#prazo-data').textContent = CONFIG.prazo_label;
+  let diasRestantes = null;
+  if(PRAZO){
+    const hoje = new Date();
+    const inicioHoje = new Date(hoje.getFullYear(), hoje.getMonth(), hoje.getDate());
+    diasRestantes = Math.ceil((PRAZO - inicioHoje) / 86400000);
+  }
+  const txtPrazo = CONFIG.prazo_label ? CONFIG.prazo_label.replace(/\s/g,'') : '';
+  const cr = $('#countdown-real');
+  if(diasRestantes !== null && diasRestantes > 1){
+    $('#topbar').innerHTML = `⏳ Faltam <b>${diasRestantes} dias</b> para o prazo de apresentação (${txtPrazo})`;
+    cr.innerHTML = `Faltam <b>${diasRestantes}</b> dias para o prazo de apresentação.`;
+    $('#sticky-prazo').textContent = `faltam ${diasRestantes} dias`;
+  } else if(diasRestantes === 1){
+    $('#topbar').innerHTML = `⏳ Falta <b>1 dia</b> para o prazo de apresentação (${txtPrazo})`;
+    cr.innerHTML = `Falta <b>1</b> dia para o prazo de apresentação.`;
+    $('#sticky-prazo').textContent = 'falta 1 dia';
+  } else if(diasRestantes === 0){
+    $('#topbar').innerHTML = `⏳ <b>Hoje</b> é o último dia do prazo de apresentação`;
+    cr.innerHTML = `<b>Hoje</b> é o último dia do prazo de apresentação.`;
+    $('#sticky-prazo').textContent = 'último dia';
+  } else {
+    $('#topbar').innerHTML = `📘 Guia Rouanet Urgente — Edição 2026 • acesso imediato`;
+    if(cr) cr.style.display = 'none';
+    $('#sticky-prazo').textContent = 'acesso imediato';
+  }
+
+  // ---- 1. Dores ----
+  if(Array.isArray(CONFIG.dores)){
+    $('#pain-grid').innerHTML = CONFIG.dores.map(d => `
+      <div class="pain-card reveal">
+        <span class="x">${esc(d.icone || '•')}</span>
+        <div><h3>${esc(d.titulo)}</h3><p>${esc(d.texto)}</p></div>
+      </div>`).join('');
+  }
+
+  // ---- 2. Os 3 dias ----
+  if(Array.isArray(CONFIG.dias)){
+    $('#dias-grid').innerHTML = CONFIG.dias.map(d => `
+      <div class="dia reveal">
+        <div class="num">${esc(d.num)}</div>
+        <span class="k">${esc(d.k)}</span>
+        <h3>${esc(d.titulo)}</h3>
+        <p>${esc(d.texto)}</p>
+      </div>`).join('');
+  }
+
+  // ---- 3. Conteúdo ----
+  if(Array.isArray(CONFIG.conteudo)){
+    $('#present-list').innerHTML = CONFIG.conteudo.map((c,i) => `
+      <li><span class="ic">${i+1}</span><span><b>${esc(c.titulo)}</b> — ${esc(c.texto)}</span></li>`).join('');
+  }
+
+  // ---- 4. Benefícios ----
+  if(Array.isArray(CONFIG.beneficios)){
+    $('#benefits-grid').innerHTML = CONFIG.beneficios.map(b => `
+      <div class="benefit reveal">
+        <div class="ic">${esc(b.icone || '✅')}</div>
+        <h3>${esc(b.titulo)}</h3>
+        <p>${esc(b.texto)}</p>
+      </div>`).join('');
+  }
+
+  // ---- 5. Para quem é ----
+  if(Array.isArray(CONFIG.para_quem)){
+    $('#forwho-list').innerHTML = CONFIG.para_quem.map(t => `
+      <li><span class="ck">✓</span><span>${esc(t)}</span></li>`).join('');
+  }
+
+  // ---- 6. O que está incluso na oferta ----
+  if(Array.isArray(CONFIG.oferta_inclui)){
+    $('#offer-includes').innerHTML = CONFIG.oferta_inclui.map(o =>
+      `<li><span><b>${esc(o.b)}</b> — ${esc(o.t)}</span></li>`).join('');
+  }
+
+  // ---- 7. FAQ ----
+  if(Array.isArray(CONFIG.faq)){
+    $('#faq-list').innerHTML = CONFIG.faq.map(f => `
+      <details class="faq-item reveal">
+        <summary>${esc(f.p)}<span class="plus">+</span></summary>
+        <div class="ans"><p>${esc(f.r)}</p></div>
+      </details>`).join('');
+    // abre uma pergunta por vez
+    const ds = $$('.faq-item');
+    ds.forEach(d => d.addEventListener('toggle', () => {
+      if(d.open) ds.forEach(o => { if(o !== d) o.open = false; });
+    }));
+  }
+
+  // ---- 7. Depoimentos ----
+  if(CONFIG.mostrar_depoimentos && Array.isArray(CONFIG.depoimentos) && CONFIG.depoimentos.length){
+    $('#testimonials-section').style.display = '';
+    $('#tst-grid').innerHTML = CONFIG.depoimentos.map(t => {
+      const inicial = (t.nome || '?').trim().charAt(0).toUpperCase();
+      return `
+      <div class="tst reveal">
+        <div class="mark" aria-hidden="true">&ldquo;</div>
+        <p>${esc(t.texto)}</p>
+        <div class="who">
+          <i>${esc(inicial)}</i>
+          <div><div class="nm">${esc(t.nome)}</div></div>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  // ---- Animação ao rolar ----
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold:.1, rootMargin:'0px 0px -40px 0px' });
+    $$('.reveal').forEach(el => io.observe(el));
+  } else {
+    $$('.reveal').forEach(el => el.classList.add('in'));
+  }
+
+  // ---- Barra fixa no celular ----
+  const sticky = $('#sticky-cta'), hero = $('.hero'), oferta = $('#oferta');
+  if('IntersectionObserver' in window && hero){
+    new IntersectionObserver(es => es.forEach(e => {
+      sticky.classList.toggle('show', !e.isIntersecting);
+    }), { threshold:0 }).observe(hero);
+    if(oferta){
+      new IntersectionObserver(es => es.forEach(e => {
+        if(e.isIntersecting) sticky.classList.remove('show');
+      }), { threshold:.2 }).observe(oferta);
     }
   }
 
-  // --- Reveal ao rolar ---
-  if ("IntersectionObserver" in window) {
-    const io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
-    $$(".rv").forEach(function(el){ io.observe(el); });
-  } else {
-    $$(".rv").forEach(function(el){ el.classList.add("in"); });
-  }
+  // ---- Documentos legais (placeholder) ----
+  $$('[data-doc]').forEach(a => a.addEventListener('click', ev => {
+    ev.preventDefault();
+    alert('Substitua este link pelo seu documento oficial.');
+  }));
 
-  // --- FAQ: abre um por vez ---
-  const faqs = $$(".faq details");
-  faqs.forEach(function(d){
-    d.addEventListener("toggle", function(){
-      if (d.open) faqs.forEach(function(o){ if (o !== d) o.open = false; });
+  // ---- SEO: dados estruturados gerados do CONFIG ----
+  const canonical = $('link[rel="canonical"]');
+  const pageUrl = canonical ? canonical.href : location.href;
+  const precoNum = parseFloat(String(CONFIG.preco).replace(/[^\d,.]/g,'').replace(',','.'));
+  const graph = [{
+    "@type":"Product",
+    "name": CONFIG.nome_produto,
+    "description": CONFIG.subtitulo,
+    "image": new URL(CONFIG.capa, pageUrl).href,
+    "brand": { "@type":"Brand", "name":"Zion Produções" },
+    "offers": {
+      "@type":"Offer", "url": pageUrl,
+      "price": isNaN(precoNum) ? undefined : precoNum.toFixed(2),
+      "priceCurrency":"BRL", "availability":"https://schema.org/InStock"
+    }
+  }];
+  if(Array.isArray(CONFIG.faq) && CONFIG.faq.length){
+    graph.push({
+      "@type":"FAQPage",
+      "mainEntity": CONFIG.faq.map(f => ({
+        "@type":"Question", "name": f.p,
+        "acceptedAnswer": { "@type":"Answer", "text": f.r }
+      }))
     });
-  });
+  }
+  const ld = document.createElement('script');
+  ld.type = 'application/ld+json';
+  ld.textContent = JSON.stringify({ "@context":"https://schema.org", "@graph": graph });
+  document.head.appendChild(ld);
 })();
 </script>
 </body>
