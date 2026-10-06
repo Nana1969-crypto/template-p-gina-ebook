@@ -793,9 +793,9 @@
           <img class="brand-logo" src="assets/logo.png" alt="Zion Productions" width="242" height="177" decoding="async" />
         </a>
         <nav class="footer-links" aria-label="Footer">
-          <a href="#" data-doc="terms">Terms of Use</a>
-          <a href="#" data-doc="privacy">Privacy Policy</a>
-          <a href="#" data-doc="disclaimer">Disclaimer</a>
+          <a href="terms.html">Terms of Use</a>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html#disclaimer">Disclaimer</a>
         </nav>
       </div>
       <div class="footer-meta">
@@ -1140,18 +1140,7 @@ const CONFIG = {
     offerIO.observe(offer);
   }
 
-  // ---- Legal documents (placeholder) ----
-  $$('[data-doc]').forEach(a=>{
-    a.addEventListener('click', (ev)=>{
-      ev.preventDefault();
-      const map = {
-        terms: 'Terms of Use — replace this link with your official document.',
-        privacy: 'Privacy Policy — replace this link with your official document.',
-        disclaimer: 'Disclaimer — this is an educational product; results vary from person to person.'
-      };
-      alert(map[a.dataset.doc] || '');
-    });
-  });
+  // ---- Legal documents: real pages (terms.html / privacy.html) ----
 
   // ---- SEO: structured data (JSON-LD) generated from CONFIG ----
   // Product schema (name, price, availability) + FAQPage schema (rich results on Google).
