@@ -1,0 +1,11 @@
+{
+  // Configuração do Cloudflare Workers — site estático da Zion Produções.
+  // "name" precisa ser igual ao do Worker já existente, para que o deploy
+  // caia no mesmo projeto e mantenha o domínio ziondigitalvault.com.
+  "name": "fancy-river-1074",
+  "compatibility_date": "2026-10-05",
+  "assets": {
+    // Pasta gerada por build.sh — é o que fica público.
+    "directory": "./public"
+  }
+}
