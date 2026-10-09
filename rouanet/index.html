@@ -228,8 +228,17 @@
   .hero-grid{ display:grid; grid-template-columns:1fr; gap:40px; align-items:center; }
   @media(min-width:960px){ .hero-grid{ grid-template-columns:1.02fr .98fr; gap:54px; } }
   .hero h1 .hl{ color:var(--primary); }
-  .hero .sub{ font-size:clamp(1.04rem,1.8vw,1.22rem); color:var(--muted); max-width:46ch; }
+  /* headline longa: corpo um pouco menor para o conjunto caber na primeira tela */
+  .hero h1{ font-size:clamp(1.72rem,3.5vw,2.45rem); line-height:1.14; max-width:19ch; }
+  .hero .sub{ font-size:clamp(1.04rem,1.8vw,1.22rem); color:var(--muted); max-width:52ch; }
   .hero .sub strong{ color:var(--text); }
+  .hero .sub span{ display:block; }
+  .hero .sub span + span{ margin-top:.85em; }
+  .hero .sub .sub-final{
+    color:var(--text); font-weight:600;
+    border-left:3px solid var(--primary); padding-left:14px;
+    margin-top:1.1em;
+  }
   .hero-actions{ margin-top:26px; }
   .hero-note{ margin:14px 0 0; font-size:.88rem; color:var(--muted); }
 
@@ -764,9 +773,14 @@
    Toda a página é montada a partir daqui.
    ============================================================ */
 const CONFIG = {
-  "titulo": "Entre a sua gaveta e o Ministério da Cultura existem só 3 degraus.",
-  "destaque": "só 3 degraus",   // trecho da headline que recebe a cor de destaque
-  "subtitulo": "Um roteiro de 3 dias para quem nunca apresentou nada e quer começar do jeito certo na Lei Rouanet.",
+  "titulo": "Em 3 dias, aprenda a transformar sua ideia em um projeto cultural pronto para enviar à Lei Rouanet.",
+  "destaque": "Em 3 dias",      // trecho da headline que recebe a cor de destaque
+  // Aceita texto único ou lista de parágrafos. O último entra em destaque.
+  "subtitulo": [
+    "Se você nunca elaborou um projeto para a Rouanet, é natural se sentir perdido diante de tantas informações. E quando você acredita na sua ideia, mas não sabe por onde começar, a frustração pode fazer você adiar seu sonho.",
+    "O Guia Rouanet Urgente — Desafio de 3 Dias foi criado para orientar você, passo a passo, na construção do seu projeto, do zero até a preparação para o envio ao Ministério da Cultura.",
+    "Vamos começar pelo que você já tem: a sua ideia."
+  ],
   "cta": "Quero enviar meu projeto urgente",
   "capa": "assets/capa.webp",
   "cor_primaria": "#edb85c",
@@ -900,7 +914,13 @@ const CONFIG = {
         : esc(t);
     }
   }
-  if(CONFIG.subtitulo) $('#hero-sub').textContent = CONFIG.subtitulo;
+  // Subtítulo: texto único ou vários parágrafos (o último ganha destaque)
+  if(CONFIG.subtitulo){
+    const paras = Array.isArray(CONFIG.subtitulo) ? CONFIG.subtitulo : [CONFIG.subtitulo];
+    $('#hero-sub').innerHTML = paras
+      .map((p, i) => `<span class="${i === paras.length - 1 && paras.length > 1 ? 'sub-final' : ''}">${esc(p)}</span>`)
+      .join('');
+  }
 
   // ---- CTA em todos os botões (fonte única de verdade) ----
   const CTA = CONFIG.cta || 'Quero meu guia';
@@ -1101,7 +1121,7 @@ const CONFIG = {
   const graph = [{
     "@type":"Product",
     "name": CONFIG.nome_produto,
-    "description": CONFIG.subtitulo,
+    "description": Array.isArray(CONFIG.subtitulo) ? CONFIG.subtitulo.join(' ') : CONFIG.subtitulo,
     "image": new URL(CONFIG.capa, pageUrl).href,
     "brand": { "@type":"Brand", "name":"Zion Produções" },
     "offers": {
