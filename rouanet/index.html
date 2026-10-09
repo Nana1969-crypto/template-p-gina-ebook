@@ -157,24 +157,50 @@
     80%{ transform:rotate(-12deg); }
     90%{ transform:rotate(7deg); }
   }
-  .topbar .num{
-    display:inline-flex; align-items:center; justify-content:center;
-    min-width:40px; height:40px; padding:0 11px; border-radius:12px;
-    background:#17100a; color:#ffd98a;
-    font-family:var(--font-display); font-weight:800; font-size:1.38rem;
-    font-variant-numeric:tabular-nums; letter-spacing:-.02em;
-    box-shadow:0 0 0 2px rgba(255,255,255,.25), 0 8px 18px -8px rgba(0,0,0,.85);
-    animation:numPulse 2.3s ease-in-out infinite;
-  }
-  @keyframes numPulse{
-    0%,100%{ transform:scale(1); box-shadow:0 0 0 2px rgba(255,255,255,.25), 0 8px 18px -8px rgba(0,0,0,.85); }
-    50%{ transform:scale(1.08); box-shadow:0 0 0 3px rgba(255,255,255,.4), 0 10px 22px -8px rgba(0,0,0,.9); }
-  }
   .topbar .bang{ font-size:1.1em; }
+  .topbar .cd-label{ font-weight:800; }
+  .topbar .cd-txt{ font-weight:800; }
+
+  /* ---- Contador regressivo (verde) ---- */
+  .cd-box{ display:inline-flex; align-items:center; gap:5px; }
+  .cd{
+    display:inline-flex; flex-direction:column; align-items:center; justify-content:center;
+    min-width:46px; padding:5px 8px 4px; border-radius:11px;
+    background:linear-gradient(180deg,#0f3d2a,#06251a);
+    border:1px solid rgba(74,222,150,.45);
+    box-shadow:0 0 0 1px rgba(0,0,0,.35), 0 8px 18px -10px rgba(0,0,0,.9),
+               inset 0 1px 0 rgba(255,255,255,.08);
+  }
+  .cd b{
+    font-family:var(--font-display); font-weight:800;
+    font-size:1.22rem; line-height:1.05; letter-spacing:-.02em;
+    color:#4ade96; font-variant-numeric:tabular-nums;
+    text-shadow:0 0 14px rgba(74,222,150,.55);
+  }
+  .cd i{
+    font-style:normal; font-size:.56rem; font-weight:700;
+    letter-spacing:.1em; text-transform:uppercase;
+    color:rgba(167,243,208,.82); margin-top:1px;
+  }
+  /* só a caixa dos segundos pisca, marcando o tempo correndo */
+  .cd:last-child b{ animation:cdTick 1s steps(2,end) infinite; }
+  @keyframes cdTick{ 0%,70%{ opacity:1; } 85%{ opacity:.55; } 100%{ opacity:1; } }
+
+  .cd-tag{
+    display:inline-flex; align-items:center;
+    background:rgba(23,16,10,.9); color:#ffd98a;
+    font-size:.72rem; font-weight:800; letter-spacing:.08em;
+    padding:5px 11px; border-radius:999px;
+    border:1px solid rgba(255,255,255,.2);
+  }
+
   @media(max-width:520px){
     .topbar{ padding:11px 13px; }
-    .topbar__in{ gap:8px; }
-    .topbar .num{ min-width:36px; height:36px; font-size:1.22rem; }
+    .topbar__in{ gap:7px; }
+    .cd{ min-width:42px; padding:4px 7px 3px; }
+    .cd b{ font-size:1.08rem; }
+    .cd i{ font-size:.52rem; }
+    .cd-tag{ font-size:.68rem; padding:4px 9px; }
   }
 
   /* ---------- Cabeçalho ---------- */
@@ -913,28 +939,58 @@ const CONFIG = {
   }
   const txtPrazo = CONFIG.prazo_label ? CONFIG.prazo_label.replace(/\s/g,'') : '';
   const cr = $('#countdown-real');
-  // monta a barra de prazo com o número em destaque
-  const barra = (corpo) => `<div class="topbar__in"><span>${corpo}</span></div>`;
-  const ICO = '<span class="ico" aria-hidden="true">⏳</span> ';
-  const RESTO = 'para o prazo de enviar projetos na Rouanet no ano de 2026 se esgotar<span class="bang">!</span>';
+  const topbar = $('#topbar');
 
-  if(diasRestantes !== null && diasRestantes > 1){
-    $('#topbar').innerHTML = barra(`${ICO}Faltam <span class="num">${diasRestantes}</span> dias ${RESTO}`);
-    cr.innerHTML = `Faltam <b>${diasRestantes}</b> dias para o prazo de apresentação (${txtPrazo}).`;
-    $('#sticky-prazo').textContent = `faltam ${diasRestantes} dias`;
-  } else if(diasRestantes === 1){
-    $('#topbar').innerHTML = barra(`${ICO}Falta <span class="num">1</span> dia ${RESTO}`);
-    cr.innerHTML = `Falta <b>1</b> dia para o prazo de apresentação (${txtPrazo}).`;
-    $('#sticky-prazo').textContent = 'falta 1 dia';
-  } else if(diasRestantes === 0){
-    $('#topbar').innerHTML = barra(`${ICO}<b>HOJE</b> é o último dia para enviar projetos na Rouanet no ano de 2026<span class="bang">!</span>`);
-    cr.innerHTML = `<b>Hoje</b> é o último dia do prazo de apresentação.`;
-    $('#sticky-prazo').textContent = 'último dia';
-  } else {
-    $('#topbar').innerHTML = barra(`${ICO}Guia Rouanet Urgente — Edição 2026 • acesso imediato`);
-    if(cr) cr.style.display = 'none';
-    $('#sticky-prazo').textContent = 'acesso imediato';
+  // Contador regressivo ao vivo, alimentado pela data real do prazo.
+  // Dias, horas, minutos e segundos — atualizado a cada segundo.
+  const dois = (v) => String(v).padStart(2,'0');
+  const selo = (valor, rotulo) =>
+    `<span class="cd"><b>${valor}</b><i>${rotulo}</i></span>`;
+
+  function pintarPrazo(){
+    if(!PRAZO){
+      topbar.innerHTML = `<div class="topbar__in"><span><span class="ico" aria-hidden="true">⏳</span> Guia Rouanet Urgente — Edição 2026 • acesso imediato</span></div>`;
+      return;
+    }
+    const restante = PRAZO - new Date();
+
+    if(restante <= 0){
+      topbar.innerHTML = `<div class="topbar__in"><span><span class="ico" aria-hidden="true">📘</span> Guia Rouanet Urgente — <b>Rouanet/2026</b> • acesso imediato</span></div>`;
+      if(cr) cr.style.display = 'none';
+      $('#sticky-prazo').textContent = 'acesso imediato';
+      return;
+    }
+
+    const seg = Math.floor(restante / 1000);
+    const d = Math.floor(seg / 86400);
+    const h = Math.floor((seg % 86400) / 3600);
+    const m = Math.floor((seg % 3600) / 60);
+    const s = seg % 60;
+
+    topbar.innerHTML =
+      `<div class="topbar__in">
+         <span class="ico" aria-hidden="true">⏳</span>
+         <span class="cd-label">Faltam</span>
+         <span class="cd-box" role="timer" aria-live="off">
+           ${selo(d, d === 1 ? 'dia' : 'dias')}${selo(dois(h),'hrs')}${selo(dois(m),'min')}${selo(dois(s),'seg')}
+         </span>
+         <span class="cd-txt">para o prazo de enviar projetos se esgotar<span class="bang">!</span></span>
+         <span class="cd-tag">Rouanet/2026</span>
+       </div>`;
+
+    // Texto acessível e sem segundos nos outros pontos da página
+    if(cr){
+      cr.innerHTML = d > 1
+        ? `Faltam <b>${d}</b> dias para o prazo de apresentação (${txtPrazo}).`
+        : (d === 1 ? `Falta <b>1</b> dia para o prazo de apresentação (${txtPrazo}).`
+                   : `<b>Hoje</b> é o último dia do prazo de apresentação.`);
+    }
+    $('#sticky-prazo').textContent =
+      d > 1 ? `faltam ${d} dias` : (d === 1 ? 'falta 1 dia' : 'último dia');
   }
+
+  pintarPrazo();
+  if(PRAZO) setInterval(pintarPrazo, 1000);
 
   // ---- 1. Dores ----
   if(Array.isArray(CONFIG.dores)){
