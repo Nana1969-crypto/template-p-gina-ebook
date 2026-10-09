@@ -127,9 +127,54 @@
 
   /* ---------- Barra de prazo ---------- */
   .topbar{
-    background:linear-gradient(90deg,var(--primary-strong),var(--primary) 50%,var(--primary-strong));
-    color:var(--ink-on-primary); font-size:.86rem; font-weight:800; text-align:center;
-    padding:10px 16px; position:relative; z-index:20;
+    background:linear-gradient(90deg,var(--primary-strong),var(--primary) 48%,#f6d794 56%,var(--primary) 64%,var(--primary-strong));
+    color:var(--ink-on-primary); text-align:center;
+    padding:13px 16px; position:relative; z-index:20; overflow:hidden;
+    box-shadow:0 10px 30px -14px rgba(237,184,92,.75);
+  }
+  /* brilho que atravessa a barra de tempos em tempos */
+  .topbar::after{
+    content:""; position:absolute; top:0; bottom:0; width:38%;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);
+    transform:skewX(-18deg); left:-45%;
+    animation:topbarShine 5.5s ease-in-out infinite;
+  }
+  @keyframes topbarShine{
+    0%,72%{ left:-45%; }
+    100%{ left:115%; }
+  }
+  .topbar__in{
+    position:relative; z-index:1;
+    display:flex; align-items:center; justify-content:center;
+    gap:10px; flex-wrap:wrap;
+    font-size:clamp(.88rem,2.7vw,1.06rem); font-weight:800; line-height:1.28;
+    letter-spacing:-.01em;
+  }
+  .topbar .ico{ font-size:1.18rem; line-height:1; animation:topbarTilt 3.4s ease-in-out infinite; }
+  @keyframes topbarTilt{
+    0%,60%,100%{ transform:rotate(0); }
+    70%{ transform:rotate(16deg); }
+    80%{ transform:rotate(-12deg); }
+    90%{ transform:rotate(7deg); }
+  }
+  .topbar .num{
+    display:inline-flex; align-items:center; justify-content:center;
+    min-width:40px; height:40px; padding:0 11px; border-radius:12px;
+    background:#17100a; color:#ffd98a;
+    font-family:var(--font-display); font-weight:800; font-size:1.38rem;
+    font-variant-numeric:tabular-nums; letter-spacing:-.02em;
+    box-shadow:0 0 0 2px rgba(255,255,255,.25), 0 8px 18px -8px rgba(0,0,0,.85);
+    animation:numPulse 2.3s ease-in-out infinite;
+  }
+  @keyframes numPulse{
+    0%,100%{ transform:scale(1); box-shadow:0 0 0 2px rgba(255,255,255,.25), 0 8px 18px -8px rgba(0,0,0,.85); }
+    50%{ transform:scale(1.08); box-shadow:0 0 0 3px rgba(255,255,255,.4), 0 10px 22px -8px rgba(0,0,0,.9); }
+  }
+  .topbar .bang{ font-size:1.1em; }
+  @media(max-width:520px){
+    .topbar{ padding:11px 13px; }
+    .topbar__in{ gap:8px; }
+    .topbar .num{ min-width:36px; height:36px; font-size:1.22rem; }
   }
 
   /* ---------- Cabeçalho ---------- */
@@ -868,20 +913,25 @@ const CONFIG = {
   }
   const txtPrazo = CONFIG.prazo_label ? CONFIG.prazo_label.replace(/\s/g,'') : '';
   const cr = $('#countdown-real');
+  // monta a barra de prazo com o número em destaque
+  const barra = (corpo) => `<div class="topbar__in"><span>${corpo}</span></div>`;
+  const ICO = '<span class="ico" aria-hidden="true">⏳</span> ';
+  const RESTO = 'para o prazo de enviar projetos na Rouanet no ano de 2026 se esgotar<span class="bang">!</span>';
+
   if(diasRestantes !== null && diasRestantes > 1){
-    $('#topbar').innerHTML = `⏳ Faltam <b>${diasRestantes} dias</b> para o prazo de apresentação (${txtPrazo})`;
-    cr.innerHTML = `Faltam <b>${diasRestantes}</b> dias para o prazo de apresentação.`;
+    $('#topbar').innerHTML = barra(`${ICO}Faltam <span class="num">${diasRestantes}</span> dias ${RESTO}`);
+    cr.innerHTML = `Faltam <b>${diasRestantes}</b> dias para o prazo de apresentação (${txtPrazo}).`;
     $('#sticky-prazo').textContent = `faltam ${diasRestantes} dias`;
   } else if(diasRestantes === 1){
-    $('#topbar').innerHTML = `⏳ Falta <b>1 dia</b> para o prazo de apresentação (${txtPrazo})`;
-    cr.innerHTML = `Falta <b>1</b> dia para o prazo de apresentação.`;
+    $('#topbar').innerHTML = barra(`${ICO}Falta <span class="num">1</span> dia ${RESTO}`);
+    cr.innerHTML = `Falta <b>1</b> dia para o prazo de apresentação (${txtPrazo}).`;
     $('#sticky-prazo').textContent = 'falta 1 dia';
   } else if(diasRestantes === 0){
-    $('#topbar').innerHTML = `⏳ <b>Hoje</b> é o último dia do prazo de apresentação`;
+    $('#topbar').innerHTML = barra(`${ICO}<b>HOJE</b> é o último dia para enviar projetos na Rouanet no ano de 2026<span class="bang">!</span>`);
     cr.innerHTML = `<b>Hoje</b> é o último dia do prazo de apresentação.`;
     $('#sticky-prazo').textContent = 'último dia';
   } else {
-    $('#topbar').innerHTML = `📘 Guia Rouanet Urgente — Edição 2026 • acesso imediato`;
+    $('#topbar').innerHTML = barra(`${ICO}Guia Rouanet Urgente — Edição 2026 • acesso imediato`);
     if(cr) cr.style.display = 'none';
     $('#sticky-prazo').textContent = 'acesso imediato';
   }
