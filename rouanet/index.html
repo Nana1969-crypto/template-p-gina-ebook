@@ -408,6 +408,22 @@
   .offer-includes li b{ color:var(--text); }
   .price{ display:flex; align-items:baseline; justify-content:center; gap:10px; margin:6px 0 4px; flex-wrap:wrap; }
   .price .now{ font-family:var(--font-display); font-weight:800; font-size:clamp(2.6rem,8vw,3.6rem); color:var(--text); line-height:1; }
+  /* preço anterior, cortado em diagonal */
+  .price .de{
+    position:relative; font-family:var(--font-display); font-weight:700;
+    font-size:clamp(1.3rem,4vw,1.75rem); color:var(--muted); line-height:1;
+    padding:0 2px;
+  }
+  .price .de::after{
+    content:""; position:absolute; left:-4px; right:-4px; top:50%;
+    height:3px; border-radius:3px; background:#e3574f;
+    transform:translateY(-50%) rotate(-11deg);
+    box-shadow:0 0 10px rgba(227,87,79,.45);
+  }
+  .price .por{
+    font-size:.95rem; font-weight:700; color:var(--muted);
+    text-transform:uppercase; letter-spacing:.1em;
+  }
   .price-note{ font-size:.92rem; color:var(--muted); margin-bottom:22px; }
   .price-note b{ color:var(--primary); }
   .pay-badges{ display:flex; align-items:center; justify-content:center; gap:14px; margin-top:20px; flex-wrap:wrap; color:var(--muted); font-size:.82rem; }
@@ -674,7 +690,11 @@
           <div class="body">
             <ul class="offer-includes" id="offer-includes"></ul>
 
-            <div class="price"><span class="now" id="preco-now">R$ 37</span></div>
+            <div class="price">
+              <span class="de" id="preco-de">R$ 97,00</span>
+              <span class="por">por</span>
+              <span class="now" id="preco-now">R$ 37,00</span>
+            </div>
             <div class="price-note" id="price-note">Pagamento único • acesso imediato após a confirmação</div>
 
             <a href="https://pay.kiwify.com.br/tYPzM9E" class="btn btn--lg btn--block btn-pulse" data-checkout id="offer-cta"></a>
@@ -793,7 +813,8 @@ const CONFIG = {
   "cor_primaria": "#edb85c",
   "checkout_url": "https://pay.kiwify.com.br/tYPzM9E",
   "nome_produto": "Guia Rouanet Urgente",
-  "preco": "R$ 37",
+  "preco": "R$ 37,00",
+  "preco_de": "R$ 97,00",           // preço de referência, exibido cortado
   "prazo": "2026-10-31",            // prazo real — alimenta a contagem regressiva
   "prazo_label": "31 / 10 / 2026",
 
@@ -953,6 +974,12 @@ const CONFIG = {
   if(CONFIG.preco){
     $('#preco-now').textContent = CONFIG.preco;
     $('#sticky-preco').textContent = CONFIG.preco;
+  }
+  // preço anterior: só aparece se estiver preenchido no CONFIG
+  const elDe = $('#preco-de');
+  if(elDe){
+    if(CONFIG.preco_de){ elDe.textContent = CONFIG.preco_de; }
+    else { elDe.remove(); const p = $('.price .por'); if(p) p.remove(); }
   }
 
   // ---- Prazo real (sem contador falso) ----
