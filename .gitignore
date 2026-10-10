@@ -1,5 +1,5 @@
-# Pacote gerado para upload manual no Cloudflare — não faz parte do site
-zion-site.zip
+# Pacotes gerados para upload manual no Cloudflare — não fazem parte do site
+zion-site*.zip
 
 # Pasta montada por build.sh a cada publicação
 public/
