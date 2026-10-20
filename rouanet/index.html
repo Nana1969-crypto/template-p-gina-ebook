@@ -988,7 +988,19 @@ const CONFIG = {
   $('#hero-cta').innerHTML = esc(CTA) + '<span class="btn__sub">Acesso imediato • Garantia de 7 dias</span>';
   $('#offer-cta').innerHTML = esc(CTA) + '<span class="btn__sub">Liberado em segundos após a compra</span>';
   $('.final .btn[data-cta]').innerHTML = esc(CTA) + '<span class="btn__sub">Acesso imediato • Risco zero</span>';
-  const checkout = CONFIG.checkout_url || '#';
+  // Leva adiante a origem do visitante (src e utm_*) até o checkout,
+  // para que cada venda na plataforma mostre de qual anúncio veio.
+  const checkout = (() => {
+    const base = CONFIG.checkout_url || '#';
+    if(base === '#') return base;
+    try{
+      const entrada = new URLSearchParams(location.search);
+      const destino = new URL(base);
+      ['src','utm_source','utm_medium','utm_campaign','utm_content','utm_term']
+        .forEach(k => { const v = entrada.get(k); if(v) destino.searchParams.set(k, v); });
+      return destino.toString();
+    }catch(e){ return base; }
+  })();
   $$('[data-checkout]').forEach(a => a.setAttribute('href', checkout));
 
   // ---- Capa ----
